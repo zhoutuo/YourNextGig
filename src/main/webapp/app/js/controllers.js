@@ -1,11 +1,11 @@
 'use strict';
 
-/* Controllers */
+angular.module('yng.controllers', []).
+controller('baseCtrl', ['$scope', '$window', function($scope, $window) {
+	// $window.navigator.geolocation.getCurrentPosition(function(position) {
+	// 	$scope.$apply(function() {
+	// 		$scope.message = position;
+	// 	});
+	// });
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
-
-  }])
-  .controller('MyCtrl2', [function() {
-
-  }]);
+}]);

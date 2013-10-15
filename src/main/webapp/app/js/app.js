@@ -7,11 +7,11 @@ var app = angular.module('yng', [
 ]);
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
-	.when('/home', {
+	.when('/', {
 		templateUrl: 'partials/search.html',
 		controller: 'searchCtrl'
 	})
 	.otherwise({
-		redirectTo: '/home'
+		redirectTo: '/'
 	});
 }]);

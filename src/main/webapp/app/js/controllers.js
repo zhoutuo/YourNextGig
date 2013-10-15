@@ -1,11 +1,21 @@
 'use strict';
 
 angular.module('yng.controllers', []).
-controller('baseCtrl', ['$scope', '$window', function($scope, $window) {
-	// $window.navigator.geolocation.getCurrentPosition(function(position) {
-	// 	$scope.$apply(function() {
-	// 		$scope.message = position;
-	// 	});
-	// });
+controller('searchCtrl', ['$scope', '$http', function($scope, $http) {
+	// declare variables
+	$scope.showLoader = '';
+	// grab geo info based on IP from ipinfo.io
+	$http.jsonp('http://ipinfo.io?callback=JSON_CALLBACK')
+					.success(function(response) {
+						$scope.city = response.city + ", " + response.region;
+						$scope.geocode = response.loc;
+					})
+					.error(function() {
+						alert("cannot get the your current city");
+					})
+					.then(function() {
+						// complete event for jsonp
+						$scope.showLoader = 'hide';
+					});
 
 }]);

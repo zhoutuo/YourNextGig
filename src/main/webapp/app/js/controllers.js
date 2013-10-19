@@ -3,7 +3,7 @@
 var controllers = angular.module('yng.controllers', []);
 controllers.controller('searchCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 	// declare variables
-	$scope.showLoader = '';
+	$scope.showLoader = true;
 	// grab geo info based on IP from city-check
 	$http.get('https://city-check.appspot.com/json')
 					.success(function(response) {
@@ -15,7 +15,7 @@ controllers.controller('searchCtrl', ['$scope', '$http', '$location', function($
 					})
 					.then(function() {
 						// complete event for jsonp
-						$scope.showLoader = 'hide';
+						$scope.showLoader = false;
 					});
 	$scope.submitLocation = function() {
 		// go to concert page

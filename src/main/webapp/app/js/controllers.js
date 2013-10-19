@@ -4,11 +4,11 @@ angular.module('yng.controllers', []).
 controller('searchCtrl', ['$scope', '$http', function($scope, $http) {
 	// declare variables
 	$scope.showLoader = '';
-	// grab geo info based on IP from ipinfo.io
-	$http.jsonp('http://ipinfo.io?callback=JSON_CALLBACK')
+	// grab geo info based on IP from city-check
+	$http.get('https://city-check.appspot.com/json')
 					.success(function(response) {
-						$scope.city = response.city + ", " + response.region;
-						$scope.geocode = response.loc;
+						$scope.city = response.human_city;
+						$scope.geocode = response.city_latlng;
 					})
 					.error(function() {
 						alert("cannot get the your current city");

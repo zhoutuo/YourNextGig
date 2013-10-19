@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('yng.controllers', []).
-controller('searchCtrl', ['$scope', '$http', function($scope, $http) {
+var controllers = angular.module('yng.controllers', []);
+controllers.controller('searchCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 	// declare variables
 	$scope.showLoader = '';
 	// grab geo info based on IP from city-check
@@ -17,5 +17,13 @@ controller('searchCtrl', ['$scope', '$http', function($scope, $http) {
 						// complete event for jsonp
 						$scope.showLoader = 'hide';
 					});
+	$scope.submitLocation = function() {
+		// go to concert page
+		$location.path("/concert").search({
+			geocode: $scope.geocode
+		});
+	}
+}]);
+controllers.controller('concertCtrl', ['$scope', function($scope) {
 
 }]);

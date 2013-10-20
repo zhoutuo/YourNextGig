@@ -30,7 +30,22 @@
                 <groupId>asm</groupId>
                 <artifactId>asm</artifactId>
                 <version>3.3.1</version>
-        </dependency>        
+        </dependency>   
+          <dependency>
+          <groupId>commons-lang</groupId>
+          <artifactId>commons-lang</artifactId>
+          <version>2.4</version>
+      </dependency>
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.0.0</version>
+      </dependency>     
+      <dependency>
+	<groupId>org.json</groupId>
+	<artifactId>json</artifactId>
+	<version>20090211</version>
+</dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -92,6 +107,24 @@
                     </execution>
                 </executions>
             </plugin>
+                    <plugin>
+            <groupId>com.googlecode.jsonschema2pojo</groupId>
+            <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+            <version>0.3.7</version>
+            <configuration>
+                <sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
+                <targetPackage>edu.usc.yournextgig</targetPackage>
+            </configuration>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>generate</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        
+
         </plugins>
     </build>
 

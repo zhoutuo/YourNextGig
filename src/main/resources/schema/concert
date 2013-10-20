@@ -1,0 +1,44 @@
+{
+    "description": "A concert",
+    "type": "object",
+    "properties": {
+        "venue": { "$ref": "#/definitions/venue" },
+        "name": { "type": "string" },
+        "info":{ "type": "string" },
+        "id": {"type": "string" }, 
+        "dtstart": {
+            "format": "date-time",
+            "type": "string"
+        },
+        "dtend": {
+            "format": "date-time",
+            "type": "string"
+        },
+        "performers": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/performer" }
+        }
+    },
+    "definitions": {
+        "venue" : {
+            "description": "A venue",
+            "type": "object",
+            "properties": {
+                "geo": { "$ref": "http://json-schema.org/geo" },
+                "name": { "type": "string" },
+                "info":{ "type": "string" },
+                "id": {"type": "string" }
+            }
+        },
+        "performer" : {
+            "description": "A performer",
+            "type": "object",
+            "properties": {
+                "name": {"type": "string" },
+                "id": {"type": "string" },
+                "info":{ "type": "string" }
+            }
+        }
+    }
+}
+

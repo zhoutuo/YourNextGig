@@ -13,6 +13,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.CharBuffer;
+import java.util.logging.Level;
 import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +48,7 @@ public class JSONFileToCsvTranslator {
             return;
         }
         outputDirectory.mkdirs();
-        FileWriter csvOutputWriter = null;
+        FileWriter csvOutputWriter;
         try { 
              csvOutputWriter = new FileWriter(outputFile);
              translator.writeColumnHeaders(csvOutputWriter);
@@ -89,12 +90,23 @@ public class JSONFileToCsvTranslator {
                 LOG.error("Unable to parse json from  file " + f.getAbsolutePath(), ex);
             } finally {
                 try {
-                    reader.close();
+                    if(null != reader)
+                    {
+                        reader.close();
+                    }
+                    
                 } catch (IOException ex) {
                     LOG.error("Unable to close reader  ", ex);
                 }
             }
+            
         }
+        try {
+            csvOutputWriter.close();
+        } catch (IOException ex) {
+            LOG.error("unable to close csv writer", ex);
+        }
+                    
     }
 
     

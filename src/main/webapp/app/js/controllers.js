@@ -21,10 +21,14 @@ controllers.controller('searchCtrl', ['$scope', '$http', '$location', function($
 					});
 	$scope.submitLocation = function() {
 		// go to concert page
-		$location.path("/concert").search({
+		$location.path("/concerts").search({
 			location: $scope.city + ',' + $scope.region
 		});
 	}
 }]);
-controllers.controller('concertCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
+controllers.controller('concertsCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
+}]);
+controllers.controller('artistCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
+}]);
+controllers.controller('reviewsCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 }]);

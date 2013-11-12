@@ -11,9 +11,17 @@ app.config(['$routeProvider', function($routeProvider) {
 		templateUrl: 'partials/search.html',
 		controller: 'searchCtrl'
 	})
-	.when('/concert', {
-		templateUrl: 'partials/concert.html',
-		controller: 'concertCtrl'
+	.when('/concerts', {
+		templateUrl: 'partials/concerts.html',
+		controller: 'concertsCtrl'
+	})
+	.when('/artist', {
+		templateUrl: 'partials/concerts.html',
+		controller: 'artistCtrl'
+	})
+	.when('/reviews', {
+		templateUrl: 'partials/reviews.html',
+		controller: 'reviewsCtrl'
 	})
 	.otherwise({
 		redirectTo: '/'

@@ -7,8 +7,10 @@ controllers.controller('searchCtrl', ['$scope', '$http', '$location', function($
 	// grab geo info based on IP from city-check
 	$http.get('https://city-check.appspot.com/json')
 					.success(function(response) {
-						$scope.city = response.human_city;
-						$scope.geocode = response.city_latlng;
+						console.log(response.region_name);
+						$scope.city = response.city;
+						$scope.region = response.region_name;
+						$scope.location = response.human_city;
 					})
 					.error(function() {
 						alert("cannot get the your current city");
@@ -20,10 +22,9 @@ controllers.controller('searchCtrl', ['$scope', '$http', '$location', function($
 	$scope.submitLocation = function() {
 		// go to concert page
 		$location.path("/concert").search({
-			geocode: $scope.geocode
+			location: $scope.city + ',' + $scope.region
 		});
 	}
 }]);
-controllers.controller('concertCtrl', ['$scope', function($scope) {
-
+controllers.controller('concertCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 }]);

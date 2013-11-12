@@ -6,15 +6,22 @@ package edu.usc.yournextgig.processing;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author jason
  */
 public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
+    private static Logger LOG = LoggerFactory.getLogger(LastFmArtistToCsvTranslator.class);
      public void translateJSONtoCSV(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
         
         JSONObject artistInfo = new JSONObject(json);
@@ -34,14 +41,46 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
                 candidateBuilder.append(",");
                 if(album.has("releaseDate"))
                 {
-                candidateBuilder.append(album.get("releaseDate").toString().trim());
-                candidateBuilder.append(",");
+                    SimpleDateFormat df = new SimpleDateFormat("d MMM yyyy");
+                    SimpleDateFormat newDf = new SimpleDateFormat("MM/dd/yyyy");
+                    String dateString = album.get("releaseDate").toString().replace(", 00:00", "").replace(',', ' ').trim();
+                    if(null != dateString && !dateString.isEmpty())
+                    {
+                    Date d;
+                    try {
+                        d = df.parse(dateString);
+                        candidateBuilder.append(newDf.format(d));
+                    
+                    } catch (ParseException ex) {
+                        LOG.error("unable to parse date", ex);
+                    }
+                    }
+                    else
+                    {
+                        candidateBuilder.append(" ");    
+                    }
+                         
+                    candidateBuilder.append(",");
                 }
-                candidateBuilder.append(candidate.get("artist").toString().replace(',', ' ').trim());
+                final String candidateArtistName = candidate.get("artist").toString().replace(',', ' ').trim();
+                candidateBuilder.append(candidateArtistName);
                 candidateBuilder.append(",");
-                candidateBuilder.append(candidate.get("title").toString().replace(',', ' ').trim());
+                candidateBuilder.append(candidate.get("name").toString().replace(',', ' ').trim());
                 candidateBuilder.append(",");
-                candidateBuilder.append(candidate.get("releaseDate").toString().replace(',', ' ').trim());
+                String dateString =candidate.get("releaseDate").toString().trim();
+            
+                SimpleDateFormat originalDateFormat = new SimpleDateFormat("MMM d, yyyy");
+                
+                SimpleDateFormat newDf = new SimpleDateFormat("MM/dd/yyyy");
+                 if(!dateString.isEmpty())
+                {
+                    try {
+                        Date d = originalDateFormat.parse(dateString);
+                        candidateBuilder.append(newDf.format(d));
+                    } catch (ParseException ex) {
+                        LOG.error("Unable to parse date for candidate " +  candidateArtistName,ex);
+                    }
+                }
                 candidateBuilder.append(",");
                 candidateBuilder.append(candidate.get("url"));
 
@@ -57,6 +96,8 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
         headersBuilder.append("targetartist");
         headersBuilder.append(",");
         headersBuilder.append("targetalbumname");
+        headersBuilder.append(",");
+        headersBuilder.append("targetreleasedate");
         headersBuilder.append(",");
         headersBuilder.append("candidateartist");
         headersBuilder.append(",");

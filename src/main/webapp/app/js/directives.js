@@ -15,7 +15,7 @@ angular.module('yng.directives', []).
 				type: 'timeline',
 				width: '100%',
 				height: '600',
-				source: 'example_json.json',
+				source: 'concerts_example.json',
 				embed_id: 'timelineContent'
 			});
   		}

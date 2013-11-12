@@ -1,0 +1,21 @@
+{
+    "timeline":
+    {
+        "headline":"Los Angeles",
+        "type":"default",
+        "text":"It has 200 upcoming popular concerts",
+        "asset": {
+            "media":"http://maps.googleapis.com/maps/api/staticmap?center=Los+Angeles,CA&zoom=14&size=400x400&sensor=false"
+        },
+        "date": [
+            {
+                "startDate": "10/8/2014",
+                "headline": "Bruno Mars Concert",
+                "text": "Performers: <a href='index.html#/artist?location=Los%20Angeles,California'>Bruno Mars</a><br>Venue: Hollywood Bowl<br>",
+                "asset": {
+                    "media": "http://maps.googleapis.com/maps/api/staticmap?center=hollywood+bowl,CA&zoom=14&size=400x400&sensor=false&markers=hollywood+bowl,CA"
+                }
+            }
+        ]
+    }
+}

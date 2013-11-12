@@ -1,0 +1,25 @@
+{
+    "timeline":
+    {
+        "headline":"Bruno Mars",
+        "type":"default",
+        "text":"<a>http://www.brunomars.com/</a>",
+        "asset": {
+            "media":"http://en.wikipedia.org/wiki/Bruno_Mars"
+        },
+        "date": [
+            {
+                "startDate": "10/8/1985",
+                "headline": "Bruno Mars was born in Honolulu"
+            }, {
+                "startDate": "5/11/2010",
+                "headline": "It's Better If You Don't Understand",
+                "text": "<ul><li>Metacritic Score: 8</li><li>User Score: 10</li></ul><br><a href='/a'>hah</a>",
+                "asset": {
+                    "media": "http://upload.wikimedia.org/wikipedia/pt/1/11/Bruno_Mars_-_It%27s_Better_If_You_Don%27t_Understand.jpg",
+                    "caption": "Album Thumbnail"
+                }
+            }
+        ]
+    }
+}

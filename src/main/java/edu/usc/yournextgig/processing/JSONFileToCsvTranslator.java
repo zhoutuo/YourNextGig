@@ -13,7 +13,6 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.CharBuffer;
-import java.util.logging.Level;
 import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,8 +26,8 @@ public class JSONFileToCsvTranslator {
     public static void main(String[] args)
     {
         JSONFileToCsvTranslator thing = new JSONFileToCsvTranslator();
-        thing.translate("/Users/jason/projects/yng/data", "/Users/jason/projects/yng/data/artistTopAlbums.csv", new LastFmArtistToCsvTranslator());
-        thing.translate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/review/reviews.csv", new MetacriticReviewsToCsvTranslator());
+        thing.translate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/data/artistTopAlbums.csv", new FreebaseArtistsToCsvTranslator());
+        thing.translate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/review/reviews.csv", new FreebaseMetacriticReviewsToCsvTranslator());
     }
     private static Logger LOG = LoggerFactory.getLogger(JSONFileToCsvTranslator.class);
     public void translate(String inputDirectory, String outputFileName, JSONtoCSVTranslator translator) 

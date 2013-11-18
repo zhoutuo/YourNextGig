@@ -20,7 +20,9 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
     private static Logger LOG = LoggerFactory.getLogger(LastFmArtistToCsvTranslator.class);
      public void translateJSONtoCSV(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
         ReleaseDateFormatter dateFormatter = ReleaseDateFormatter.createDefaultReleaseDateFormatter();
-        
+        ArtistNameFormatter artistFormatter = new ArtistNameFormatter();
+        AlbumNameFormatter albumFormatter = new AlbumNameFormatter();
+    
         JSONObject artistInfo = new JSONObject(json);
         JSONArray topAlbums = artistInfo.getJSONArray("topAlbums");
         for(int i = 0; i < topAlbums.length(); i++)
@@ -31,10 +33,11 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
             {
                 JSONObject candidate = candidates.getJSONObject(j);
                 StringBuilder candidateBuilder = new StringBuilder();
-                
-                candidateBuilder.append(artistInfo.get("name").toString().replace(',', ' ').trim());
+                String artistName = artistInfo.getString("name");
+                candidateBuilder.append(artistFormatter.formatArtistName(artistName));
                 candidateBuilder.append(",");
-                candidateBuilder.append(album.get("name").toString().replace(',', ' ').trim());
+                String albumName = album.getString("name");
+                candidateBuilder.append(albumFormatter.formatAlbumName(albumName));
                 candidateBuilder.append(",");
                 if(album.has("releaseDate"))
                 {
@@ -43,10 +46,11 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
                     candidateBuilder.append(dateFormatter.formatReleaseDate(dateString));
                     candidateBuilder.append(",");
                 }
-                final String candidateArtistName = candidate.get("artist").toString().replace(',', ' ').trim();
-                candidateBuilder.append(candidateArtistName);
+                 final String candidateArtistName = candidate.getString("artist");
+                candidateBuilder.append(artistFormatter.formatArtistName(candidateArtistName));
                 candidateBuilder.append(",");
-                candidateBuilder.append(candidate.get("name").toString().replace(',', ' ').trim());
+                final String candidateAlbumName = candidate.getString("name");
+                candidateBuilder.append(albumFormatter.formatAlbumName(candidateAlbumName));
                 candidateBuilder.append(",");
                 String dateString =candidate.get("releaseDate").toString().trim();
                 candidateBuilder.append(dateFormatter.formatReleaseDate(dateString));

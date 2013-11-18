@@ -22,15 +22,19 @@ public class FreebaseArtistsToCsvTranslator implements JSONtoCSVTranslator {
 
     public void translateJSONtoCSV(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
         ReleaseDateFormatter dateFormatter = ReleaseDateFormatter.createDefaultReleaseDateFormatter();
+        ArtistNameFormatter artistFormatter = new ArtistNameFormatter();
+        AlbumNameFormatter albumFormatter = new AlbumNameFormatter();
+        
         JSONObject artistInfo = new JSONObject(json);
         JSONArray topAlbums = artistInfo.getJSONArray("/music/artist/album");
         for (int i = 0; i < topAlbums.length(); i++) {
             JSONObject album = topAlbums.getJSONObject(i);
             StringBuilder candidateBuilder = new StringBuilder();
-
-            candidateBuilder.append(artistInfo.get("name").toString().replace(',', ' ').trim());
+            String artistName = artistInfo.getString("name");
+            candidateBuilder.append(artistFormatter.formatArtistName(artistName));
             candidateBuilder.append(",");
-            candidateBuilder.append(album.get("name").toString().replace(',', ' ').replace('"', ' ').trim());
+            String albumName = album.getString("name");
+            candidateBuilder.append(albumFormatter.formatAlbumName(albumName));
             candidateBuilder.append(",");
             if (album.has("/music/album/release_date")) {
                 String dateString = album.get("/music/album/release_date").toString();

@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 public class LastFmArtistToCsvTranslator implements JSONtoCSVTranslator{
     private static Logger LOG = LoggerFactory.getLogger(LastFmArtistToCsvTranslator.class);
     @Override
-    public void translateJSONtoCSV(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
+    public void translateJSON(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
         ReleaseDateFormatter dateFormatter = ReleaseDateFormatter.createDefaultReleaseDateFormatter();
         
         JSONObject artistInfo = new JSONObject(json);

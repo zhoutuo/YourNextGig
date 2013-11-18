@@ -20,7 +20,7 @@ public class MetacriticReviewsByArtistToCsvTranslator implements JSONtoCSVTransl
 
     private static Logger LOG = LoggerFactory.getLogger(LastFmArtistToCsvTranslator.class);
 
-    public void translateJSONtoCSV(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
+    public void translateJSON(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
         ReleaseDateFormatter dateFormatter = ReleaseDateFormatter.createDefaultReleaseDateFormatter();
         ArtistNameFormatter artistFormatter = new ArtistNameFormatter();
         AlbumNameFormatter albumFormatter = new AlbumNameFormatter();

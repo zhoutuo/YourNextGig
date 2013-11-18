@@ -20,7 +20,7 @@ public class FreebaseArtistsToCsvTranslator implements JSONtoCSVTranslator {
 
     private static Logger LOG = LoggerFactory.getLogger(FreebaseArtistsToCsvTranslator.class);
 
-    public void translateJSONtoCSV(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
+    public void translateJSON(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
         ReleaseDateFormatter dateFormatter = ReleaseDateFormatter.createDefaultReleaseDateFormatter();
         ArtistNameFormatter artistFormatter = new ArtistNameFormatter();
         AlbumNameFormatter albumFormatter = new AlbumNameFormatter();
@@ -44,7 +44,7 @@ public class FreebaseArtistsToCsvTranslator implements JSONtoCSVTranslator {
                 if(album.has("mid"))
                 {
                     String mid = album.getString("mid");
-                    mid = "http://rdf.freebase.com/" +mid.substring(1).replace('/', '.');
+                    mid = "http://rdf.freebase.com/ns/" +mid.substring(1).replace('/', '.');
                     candidateBuilder.append(mid);
                 }
             }

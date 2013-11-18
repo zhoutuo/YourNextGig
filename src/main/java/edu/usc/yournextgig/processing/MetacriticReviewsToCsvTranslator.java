@@ -6,10 +6,6 @@ package edu.usc.yournextgig.processing;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.logging.Level;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +19,7 @@ import org.slf4j.LoggerFactory;
 public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
     private static Logger LOG = LoggerFactory.getLogger(LastFmArtistToCsvTranslator.class);
      public void translateJSONtoCSV(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
+        ReleaseDateFormatter dateFormatter = ReleaseDateFormatter.createDefaultReleaseDateFormatter();
         
         JSONObject artistInfo = new JSONObject(json);
         JSONArray topAlbums = artistInfo.getJSONArray("topAlbums");
@@ -41,25 +38,9 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
                 candidateBuilder.append(",");
                 if(album.has("releaseDate"))
                 {
-                    SimpleDateFormat df = new SimpleDateFormat("d MMM yyyy");
-                    SimpleDateFormat newDf = new SimpleDateFormat("MM/dd/yyyy");
-                    String dateString = album.get("releaseDate").toString().replace(", 00:00", "").replace(',', ' ').trim();
-                    if(null != dateString && !dateString.isEmpty())
-                    {
-                    Date d;
-                    try {
-                        d = df.parse(dateString);
-                        candidateBuilder.append(newDf.format(d));
                     
-                    } catch (ParseException ex) {
-                        LOG.error("unable to parse date", ex);
-                    }
-                    }
-                    else
-                    {
-                        candidateBuilder.append(" ");    
-                    }
-                         
+                    String dateString = album.get("releaseDate").toString();
+                    candidateBuilder.append(dateFormatter.formatReleaseDate(dateString));
                     candidateBuilder.append(",");
                 }
                 final String candidateArtistName = candidate.get("artist").toString().replace(',', ' ').trim();
@@ -68,20 +49,9 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
                 candidateBuilder.append(candidate.get("name").toString().replace(',', ' ').trim());
                 candidateBuilder.append(",");
                 String dateString =candidate.get("releaseDate").toString().trim();
-            
-                SimpleDateFormat originalDateFormat = new SimpleDateFormat("MMM d, yyyy");
-                
-                SimpleDateFormat newDf = new SimpleDateFormat("MM/dd/yyyy");
-                 if(!dateString.isEmpty())
-                {
-                    try {
-                        Date d = originalDateFormat.parse(dateString);
-                        candidateBuilder.append(newDf.format(d));
-                    } catch (ParseException ex) {
-                        LOG.error("Unable to parse date for candidate " +  candidateArtistName,ex);
-                    }
-                }
+                candidateBuilder.append(dateFormatter.formatReleaseDate(dateString));
                 candidateBuilder.append(",");
+               
                 candidateBuilder.append(candidate.get("url"));
 
                 candidateBuilder.append("\n");

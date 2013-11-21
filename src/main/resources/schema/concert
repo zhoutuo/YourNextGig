@@ -58,7 +58,7 @@
                  "name": { "type": "string" },
                 "info":{ "type": "string" },
                 "id": {"type": "string" }, 
-                 "releaseDate": {
+                "releaseDate": {
                     "format": "date-time",
                     "type": "string"
                 },

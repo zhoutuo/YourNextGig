@@ -17,7 +17,12 @@ import javax.ws.rs.core.Response;
 public interface ConcertQuery {
     
     @GET
+    @Path("/search")
     @Produces("application/json")
     public Response search(@QueryParam("lat") Double lat, @QueryParam("lon") Double lon,
     @QueryParam("starttime") Long starttime, @QueryParam("endtime") Long endtime);
+    
+    @GET
+    @Produces("application/json")
+    public Response search(@QueryParam("id") String id);
 }

@@ -14,7 +14,7 @@ import org.json.JSONObject;
  *
  * @author jason
  */
-@Path("/concert")
+@Path("/stubconcert")
 public class StubConcertQuery implements ConcertQuery {
 
     @Override
@@ -46,6 +46,11 @@ public class StubConcertQuery implements ConcertQuery {
         concert.getPerformers().add(performer);
         JSONObject obj = new JSONObject(concert);
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
+    }
+
+    @Override
+    public Response search(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

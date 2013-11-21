@@ -20,11 +20,21 @@
         }
     },
     "definitions": {
+        "location" : {
+            "description" : "A location",
+            "type": "object",
+            "properties": {
+                "geo": { "$ref": "http://json-schema.org/geo" },
+                "city": { "type": "string" },
+                "state": { "type": "string" },   
+                "country": { "type": "string" }
+            }
+        },
         "venue" : {
             "description": "A venue",
             "type": "object",
             "properties": {
-                "geo": { "$ref": "http://json-schema.org/geo" },
+                "location": { "$ref": "#/definitions/location" },
                 "name": { "type": "string" },
                 "info":{ "type": "string" },
                 "id": {"type": "string" }

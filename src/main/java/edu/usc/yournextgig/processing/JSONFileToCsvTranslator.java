@@ -26,8 +26,8 @@ public class JSONFileToCsvTranslator {
     public static void main(String[] args)
     {
         JSONFileToCsvTranslator thing = new JSONFileToCsvTranslator();
-        thing.translate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/data/artistTopAlbums.csv", new FreebaseArtistsToCsvTranslator());
-        thing.translate("/Users/jason/projects/yng/metacritic", "/Users/jason/projects/yng/metacritic/reviews.csv", new MetacriticReviewsByArtistToCsvTranslator());
+        thing.translate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/karma_inputs/artistTopAlbums.csv", new FreebaseArtistsToCsvTranslator());
+        thing.translate("/Users/jason/projects/yng/metacritic", "/Users/jason/projects/yng/karma_inputs/reviews.csv", new MetacriticReviewsByArtistToCsvTranslator());
     }
     private static Logger LOG = LoggerFactory.getLogger(JSONFileToCsvTranslator.class);
     public void translate(String inputDirectory, String outputFileName, JSONtoCSVTranslator translator) 

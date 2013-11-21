@@ -13,7 +13,7 @@ import org.json.JSONObject;
  *
  * @author jason
  */
-@Path("/venue")
+@Path("/stubvenue")
 public class StubVenueQuery implements VenueQuery{
 
     @Override
@@ -22,10 +22,15 @@ public class StubVenueQuery implements VenueQuery{
         venue.setId(id);
         venue.setInfo("a good place");
         venue.setName("The Greek Theatre");
+        Location location = new Location();
+        location.setCity("Los Angeles");
+        location.setCountry("USA");
+        location.setState("CA");
         Geo geo = new Geo();
-        geo.setLatitude(40.0);
-        geo.setLongitude(-115.0);
-        venue.setGeo(geo);
+        geo.setLatitude(45.0);
+        geo.setLongitude(-118.0);
+        location.setGeo(geo);
+        venue.setLocation(location);
         JSONObject obj = new JSONObject(venue);
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
     }

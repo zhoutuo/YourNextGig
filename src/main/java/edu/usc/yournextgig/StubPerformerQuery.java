@@ -13,7 +13,7 @@ import org.json.JSONObject;
  *
  * @author jason
  */
-@Path("/performer")
+@Path("/stubperformer")
 public class StubPerformerQuery implements PerformerQuery {
 
     @Override

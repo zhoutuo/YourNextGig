@@ -28,10 +28,15 @@ public class StubConcertQuery implements ConcertQuery {
         Venue venue = new Venue();
         venue.setId("987654");
         venue.setInfo("a good place");
+        Location location = new Location();
+        location.setCity("Los Angeles");
+        location.setCountry("USA");
+        location.setState("CA");
         Geo geo = new Geo();
         geo.setLatitude(45.0);
         geo.setLongitude(-118.0);
-        venue.setGeo(geo);
+        location.setGeo(geo);
+        venue.setLocation(location);
         venue.setName("The Greek Theater");
         concert.setVenue(venue);
         Performer performer = new Performer();

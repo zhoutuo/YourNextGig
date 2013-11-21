@@ -26,7 +26,7 @@ public class JSONFileConsolidator {
     public static void main(String[] args)
     {
         JSONFileConsolidator thing = new JSONFileConsolidator();
-        thing.consolidate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/consolidatedreviews.json", new JSONIdentityTranslator());
+        thing.consolidate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/karma_inputs/consolidatedreviews.json", new JSONIdentityTranslator());
        
     }
     private static Logger LOG = LoggerFactory.getLogger(JSONFileConsolidator.class);
@@ -72,10 +72,7 @@ public class JSONFileConsolidator {
                 StringBuilder jsonBuffer = new StringBuilder();
                 CharBuffer rawJsonBuffer = CharBuffer.allocate(1000);
                 reader = new BufferedReader(new FileReader(f));
-                if(f.getName().contains("Common"))
-                {
-                    System.out.println("park");
-                }
+               
                 int numRead = 0;
                 while(-1 != (numRead = reader.read(rawJsonBuffer)))
              
@@ -86,13 +83,9 @@ public class JSONFileConsolidator {
                 }
                 translator.translateJSON(jsonBuffer.toString(), csvOutputWriter);
                 csvOutputWriter.flush();
-                if(i < 110)
+                if(i < jsonFiles.length -1)
                 {
                     csvOutputWriter.append(",\n");
-                }
-                else
-                {
-                    break;
                 }
                 
             } catch (FileNotFoundException ex) {

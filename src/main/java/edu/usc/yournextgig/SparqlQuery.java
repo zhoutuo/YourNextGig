@@ -46,5 +46,5 @@ public abstract class SparqlQuery {
     }
       
           
-    protected abstract JSONObject translateQueryResultToVenue(JSONArray array, String id);
+    protected abstract JSONObject translateQueryResult(JSONArray array, String id);
 }

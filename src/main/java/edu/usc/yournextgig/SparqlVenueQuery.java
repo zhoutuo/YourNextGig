@@ -27,14 +27,14 @@ public class SparqlVenueQuery extends SparqlQuery implements VenueQuery{
         String filledoutsearchstring = searchString.replace("{0}", id);
         LOG.trace("sparql query:" + filledoutsearchstring);
         JSONArray array = sesame.queryForData(filledoutsearchstring);
-        JSONObject obj = translateQueryResultToVenue(array, id);
+        JSONObject obj = translateQueryResult(array, id);
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
     }
  
   
 
     @Override
-    protected JSONObject translateQueryResultToVenue(JSONArray array, String id) {
+    protected JSONObject translateQueryResult(JSONArray array, String id) {
         if(array.length() > 0)
         {
             try {

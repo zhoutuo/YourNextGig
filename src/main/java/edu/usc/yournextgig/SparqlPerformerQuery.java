@@ -29,12 +29,12 @@ public class SparqlPerformerQuery extends SparqlQuery implements PerformerQuery 
         this.searchString = this.loadSearchString("performerquery.rdf");
         String populatedString = searchString.replace("{0}", id);
         JSONArray result = sesame.queryForData(populatedString);
-        JSONObject obj = translateQueryResultToVenue(result, id);
+        JSONObject obj = translateQueryResult(result, id);
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
     }
 
     @Override
-    protected JSONObject translateQueryResultToVenue(JSONArray array, String id) {
+    protected JSONObject translateQueryResult(JSONArray array, String id) {
        
         if(array != null && array.length() > 0)
         {
@@ -46,7 +46,7 @@ public class SparqlPerformerQuery extends SparqlQuery implements PerformerQuery 
                 performer.setInfo(jsonPerformer.getJSONObject("wikipage").getString("value"));
                 return new JSONObject(performer);
             } catch (JSONException ex) {
-                Logger.getLogger(SparqlPerformerQuery.class.getName()).log(Level.SEVERE, null, ex);
+                LOG.error("Unable to translate query result to performer: " + ex.getMessage());
             }
         }
         return new JSONObject();

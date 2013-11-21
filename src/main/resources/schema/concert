@@ -40,13 +40,49 @@
                 "id": {"type": "string" }
             }
         },
+        "award" : {
+            "description": "An award",
+            "type": "object",
+            "properties": {
+                 "name": { "type": "string" },
+                 "date": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            }
+        },
+        "album" : {
+            "description": "An album",
+            "type": "object",
+            "properties": {
+                 "name": { "type": "string" },
+                "info":{ "type": "string" },
+                "id": {"type": "string" }, 
+                 "releaseDate": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "awards": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/award" }
+                }
+            }
+        },
         "performer" : {
             "description": "A performer",
             "type": "object",
             "properties": {
                 "name": {"type": "string" },
                 "id": {"type": "string" },
-                "info":{ "type": "string" }
+                "info":{ "type": "string" },
+                "albums": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/album" }
+                },
+                "awards": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/award" }
+                }
             }
         }
     }

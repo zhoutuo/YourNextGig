@@ -30,6 +30,16 @@ public class ArtistSparqlQuery extends SparqlQuery<Artist> {
         return instance;
     }
     
+
+    @Override
+    public Artist search(String id) {
+        Artist artist = super.search(id);
+        List<Album> albums = AlbumSparqlQuery.getInstance().searchByArtist(id);
+        artist.getAlbums().addAll(albums);
+        return artist;
+        
+    }
+    
     @Override
     protected String getQueryStringFileName() {
         return "artistquery.rdf";

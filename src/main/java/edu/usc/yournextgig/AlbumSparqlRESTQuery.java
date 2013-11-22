@@ -35,7 +35,12 @@ public class AlbumSparqlRESTQuery implements AlbumRESTQuery {
         LOG.trace(artistId);
         AlbumSparqlQuery instance = AlbumSparqlQuery.getInstance();
         List<Album> albums = instance.searchByArtist(artistId);
-        JSONArray results = new JSONArray(albums);
+        JSONArray results = new JSONArray();
+        for(Album a : albums)
+        {
+            results.put(new JSONObject(a));
+        }
+        
         return Response.ok(results.toString(), MediaType.APPLICATION_JSON).build();
     }
     

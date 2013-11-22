@@ -1,4 +1,4 @@
- prefix status: <http://metadataregistry.org/uri/RegStatus/>
+prefix status: <http://metadataregistry.org/uri/RegStatus/>
 prefix ns4: <http://www.w3.org/ns/prov#>
 prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#>
 prefix schema: <http://schema.org/>
@@ -32,16 +32,17 @@ prefix rr: <http://www.w3.org/ns/r2rml#>
 prefix km-dev: <http://isi.edu/integration/karma/dev#>
 
 
-select ?albumname ?releaseDate ?url ?album
+select ?artistname (CONCAT( "http://en.wikipedia.org/wiki?curid=", ?wikiid) as ?wikipage ) ?id 
 where {
-{ BIND("http://musicbrainz.org/artist/{0}" AS ?artistid) } .
-?artist owl:sameAs ?artistmbid .
-FILTER(?artistmbid = ?artistid ) .
-?artist a <http://dbpedia.org/ontology/MusicalArtist>  .
-?artist <http://dbpedia.org/ontology/album> ?album .
-?album  rdfs:label ?albumname .
-?album  <http://dbpedia.org/ontology/releaseDate> ?releaseDate .
-OPTIONAL { ?album
-<http://www.openarchives.org/ore/terms/isDescribedBy> ?review .
-?review <http://dbpedia.org/ontology/websiteLabel> ?url } .
+{ BIND("{0}" AS ?eventid) } .
+?event <http://dbpedia.org/ontology/id> ?eventid .
+?event <http://dbpedia.org/ontology/performer> ?artistmbid .
+ BIND(str(?artistmbid) AS ?artistmbidstr ) .
+BIND(strafter(?artistmbidstr, "artist/") as ?id ) . 
+?artist owl:sameAs ?arti .
+?artist a <http://dbpedia.org/ontology/MusicalArtist> . 
+FILTER(?arti = ?artistmbidstr ) .
+?artist rdfs:label ?artistname .
+ ?artist <http://dbpedia.org/ontology/wikiPageID> ?wikiid .
+
 }

@@ -25,5 +25,10 @@ public class ArtistStubRESTQuery implements ArtistRESTQuery {
         JSONObject obj = new JSONObject(artist);
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
     }
+
+    @Override
+    public Response searchByEvent(String eventId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

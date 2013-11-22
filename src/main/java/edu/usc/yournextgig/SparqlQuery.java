@@ -7,8 +7,10 @@ package edu.usc.yournextgig;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,23 +23,23 @@ import org.slf4j.LoggerFactory;
 public abstract class SparqlQuery<E> {
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SparqlQuery.class);
     
+    private final Map<String, String> queryStrings = new HashMap<String, String>();
     
     public E search(String id) {
         SesameTool sesame = SesameTool.getInstance();
-        this.searchString = this.loadSearchString(getQueryStringFileName());
+        String searchString = this.loadSearchString(getQueryStringFileName());
         String populatedString = searchString.replace("{0}", id);
         JSONArray result = sesame.queryForData(populatedString);
         return translateQueryResult(result);
     }
     
-    protected String searchString = null;
       public String loadSearchString(String fileName)
     {
-        if(searchString != null && !searchString.isEmpty())
+        if(queryStrings.containsKey(fileName))
         {
-            return searchString;
+            return queryStrings.get(fileName);
         }
-        searchString = "";
+        String searchString = "";
         try {
             BufferedReader reader = new BufferedReader( new InputStreamReader(this.getClass().getResourceAsStream(fileName)));
             String         line = null;
@@ -50,6 +52,7 @@ public abstract class SparqlQuery<E> {
             }
 
             searchString = stringBuilder.toString();
+            queryStrings.put(fileName, searchString);
         } catch (IOException ex) {
             LOG.error("Unable to load search string", ex);
             

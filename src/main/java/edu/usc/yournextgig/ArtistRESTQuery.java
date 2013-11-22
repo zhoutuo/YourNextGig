@@ -13,7 +13,7 @@ import javax.ws.rs.core.Response;
  *
  * @author jason
  */
-public interface PerformerQuery {
+public interface ArtistRESTQuery {
     @GET
     @Produces("application/json")
     public Response search(@QueryParam("id") String id);

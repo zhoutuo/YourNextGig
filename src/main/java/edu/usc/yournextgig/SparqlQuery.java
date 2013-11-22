@@ -7,7 +7,10 @@ package edu.usc.yournextgig;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 
@@ -15,8 +18,17 @@ import org.slf4j.LoggerFactory;
  *
  * @author jason
  */
-public abstract class SparqlQuery {
+public abstract class SparqlQuery<E> {
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SparqlQuery.class);
+    
+    
+    public E search(String id) {
+        SesameTool sesame = SesameTool.getInstance();
+        this.searchString = this.loadSearchString(getQueryStringFileName());
+        String populatedString = searchString.replace("{0}", id);
+        JSONArray result = sesame.queryForData(populatedString);
+        return translateQueryResult(result);
+    }
     
     protected String searchString = null;
       public String loadSearchString(String fileName)
@@ -45,6 +57,37 @@ public abstract class SparqlQuery {
         return searchString;
     }
       
-          
-    protected abstract JSONObject translateQueryResult(JSONArray array, String id);
+    protected E translateQueryResult(JSONArray array) {
+
+        if (array != null && array.length() > 0) {
+            try {
+                JSONObject json = array.getJSONObject(0);
+                return translateQueryResult(json);
+            } catch (JSONException ex) {
+                LOG.error("Unable to translate query result: " + ex.getMessage());
+            }
+        }
+        return emptyQueryResult();
+    }
+    
+    protected List<E> translateQueryResults(JSONArray array) {
+
+        List<E> results = new LinkedList<E>();
+        if (array != null) {
+            for (int i = 0; i < array.length(); i++) {
+                try {
+                    JSONObject json = array.getJSONObject(i);
+                    results.add(translateQueryResult(json));
+                } catch (JSONException ex) {
+                    LOG.error("Unable to translate query result: " + ex.getMessage());
+                }
+            }
+        }
+        return results;
+    }
+    
+    protected abstract E emptyQueryResult();
+    protected abstract E translateQueryResult(JSONObject object) throws JSONException;
+    
+    protected abstract String getQueryStringFileName();
 }

@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
  *
  * @author jason
  */
-public interface AlbumQuery {
+public interface AlbumRESTQuery {
     @GET
     @Produces("application/json")
     public Response search(@QueryParam("id") String id);

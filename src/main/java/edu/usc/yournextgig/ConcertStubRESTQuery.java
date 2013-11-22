@@ -15,7 +15,7 @@ import org.json.JSONObject;
  * @author jason
  */
 @Path("/stubconcert")
-public class StubConcertQuery implements ConcertQuery {
+public class ConcertStubRESTQuery implements ConcertRESTQuery {
 
     @Override
     public Response search(Double lat, Double lon, Long starttime, Long endtime) {
@@ -39,11 +39,11 @@ public class StubConcertQuery implements ConcertQuery {
         venue.setLocation(location);
         venue.setName("The Greek Theater");
         concert.setVenue(venue);
-        Performer performer = new Performer();
-        performer.setId("5553333");
-        performer.setInfo("a good band");
-        performer.setName("The Beatles");
-        concert.getPerformers().add(performer);
+        Artist artist = new Artist();
+        artist.setId("5553333");
+        artist.setInfo("a good band");
+        artist.setName("The Beatles");
+        concert.getArtists().add(artist);
         JSONObject obj = new JSONObject(concert);
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
     }

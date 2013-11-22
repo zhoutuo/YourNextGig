@@ -14,7 +14,7 @@ import org.json.JSONObject;
  * @author jason
  */
 @Path("/stubvenue")
-public class StubVenueQuery implements VenueQuery{
+public class VenueStubRESTQuery implements VenueRESTQuery{
 
     @Override
     public Response search(String id) {

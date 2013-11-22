@@ -14,9 +14,9 @@
             "format": "date-time",
             "type": "string"
         },
-        "performers": {
+        "artists": {
             "type": "array",
-            "items": { "$ref": "#/definitions/performer" }
+            "items": { "$ref": "#/definitions/artist" }
         }
     },
     "definitions": {
@@ -68,8 +68,8 @@
                 }
             }
         },
-        "performer" : {
-            "description": "A performer",
+        "artist" : {
+            "description": "An artist",
             "type": "object",
             "properties": {
                 "name": {"type": "string" },

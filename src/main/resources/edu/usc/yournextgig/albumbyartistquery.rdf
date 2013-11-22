@@ -34,7 +34,8 @@ prefix km-dev: <http://isi.edu/integration/karma/dev#>
 
 select ?albumname ?releaseDate ?url ?album
 where {
-?artist owl:sameAs "http://musicbrainz.org/artist/{0}" .
+{ BIND("http://musicbrainz.org/artist/{0}" AS ?artistid) } .
+?artist owl:sameAs ?artistid .
 ?artist a <http://dbpedia.org/ontology/MusicalArtist>  .
 ?artist <http://dbpedia.org/ontology/album> ?album .
 ?album  rdfs:label ?albumname .

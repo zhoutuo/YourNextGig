@@ -26,6 +26,14 @@ public class VenueSparqlRESTQuery implements VenueRESTQuery{
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
     }
 
+    @Override
+    public Response searchByEvent(String eventId) {
+         VenueSparqlQuery instance = VenueSparqlQuery.getInstance();
+        Venue v = instance.searchByEvent(eventId);        
+        JSONObject obj = new JSONObject(v);
+        return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
+    }
+
  
  
 }

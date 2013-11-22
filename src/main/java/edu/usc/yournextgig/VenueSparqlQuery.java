@@ -36,6 +36,14 @@ public class VenueSparqlQuery extends SparqlQuery<Venue> {
         return "venuequery.rdf";
     }
 
+    protected Venue searchByEvent(String eventId)
+    {
+        SesameTool sesame = SesameTool.getInstance();
+        String searchString = this.loadSearchString("venuebyeventquery.rdf");
+        String populatedString = searchString.replace("{0}", eventId);
+        JSONArray result = sesame.queryForData(populatedString);
+        return translateQueryResult(result);
+    }
     @Override
     protected Venue translateQueryResult(JSONObject jsonVenue) throws JSONException {
         Venue venue = new Venue();

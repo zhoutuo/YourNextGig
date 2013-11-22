@@ -34,6 +34,16 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
         }
         return instance;
     }
+    
+    @Override
+    public Concert search(String id) {
+        Concert concert = super.search(id);
+        searchForArtists(concert);
+        searchForVenue(concert);
+        return concert;
+        
+    }
+    
     @Override
     protected Concert translateQueryResult(JSONArray array) {
               
@@ -95,6 +105,14 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
     @Override
     protected Concert emptyQueryResult() {
         return new Concert();
+    }
+
+    private void searchForArtists(Concert concert) {
+        concert.getArtists().addAll(ArtistSparqlQuery.getInstance().searchByEvent(concert.getId()));
+    }
+
+    private void searchForVenue(Concert concert) {
+        concert.setVenue(VenueSparqlQuery.getInstance().searchByEvent(concert.getId()));
     }
     
 }

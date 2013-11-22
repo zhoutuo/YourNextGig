@@ -34,5 +34,10 @@ public class VenueStubRESTQuery implements VenueRESTQuery{
         JSONObject obj = new JSONObject(venue);
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
     }
+
+    @Override
+    public Response searchByEvent(String eventId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

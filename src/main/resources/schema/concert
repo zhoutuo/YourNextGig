@@ -51,12 +51,20 @@
                 }
             }
         },
+        "review" : {
+            "description": "A review",
+            "type": "object",
+            "properties": {
+                "grade": {"type": "string" }, 
+                "review": {"type": "string" }, 
+                "source": {"type": "string" } 
+            }
+        },
         "album" : {
             "description": "An album",
             "type": "object",
             "properties": {
                  "name": { "type": "string" },
-                "info":{ "type": "string" },
                 "id": {"type": "string" }, 
                 "releaseDate": {
                     "format": "date-time",
@@ -65,6 +73,10 @@
                 "awards": {
                     "type": "array",
                     "items": { "$ref": "#/definitions/award" }
+                },
+                "reviews": {
+                      "type": "array",
+                    "items": { "$ref": "#/definitions/review" }
                 }
             }
         },

@@ -32,12 +32,16 @@ prefix rr: <http://www.w3.org/ns/r2rml#>
 prefix km-dev: <http://isi.edu/integration/karma/dev#>
 
 
-select ?albumname ?releaseDate ?album
+select ?author ?description ?rating
 where {
 { BIND(IRI("{0}") AS ?album) } .
 ?album a <http://dbpedia.org/ontology/Album>  ;
   rdfs:label ?albumname ;
   <http://dbpedia.org/ontology/releaseDate> ?releaseDate .
-
+ ?album <http://www.openarchives.org/ore/terms/isDescribedBy> ?reviewcollection .
+?reviewcollection <http://dbpedia.org/ontology/isPartOf> ?review  .
+?review dcterms:contributor ?author .
+?review dbpedia-owl:description ?description .
+?review dbpedia-owl:rating ?rating .
 
 }

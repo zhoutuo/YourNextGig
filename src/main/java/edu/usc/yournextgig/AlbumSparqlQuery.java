@@ -25,6 +25,7 @@ public class AlbumSparqlQuery extends SparqlQuery<Album> {
     private static AlbumSparqlQuery instance;
 
     private AlbumSparqlQuery() {
+        
     }
 
     public static AlbumSparqlQuery getInstance() {
@@ -34,6 +35,12 @@ public class AlbumSparqlQuery extends SparqlQuery<Album> {
         return instance;
     }
 
+    @Override
+    public Album search(String id) {
+        Album album = super.search(id);
+        searchForAlbumReviews(album);
+        return album;
+    }
     @Override
     protected String getQueryStringFileName() {
         return "albumquery.rdf";
@@ -48,7 +55,12 @@ public class AlbumSparqlQuery extends SparqlQuery<Album> {
         LOG.trace(populatedString);
         JSONArray result = sesame.queryForData(populatedString);
         LOG.trace(result.toString());
-        return translateQueryResults(result);
+        List<Album> albums = translateQueryResults(result);
+        for(Album album : albums)
+        {
+            searchForAlbumReviews(album);
+        }
+        return albums;
 
     }
 
@@ -68,12 +80,15 @@ public class AlbumSparqlQuery extends SparqlQuery<Album> {
         album.setId(jsonAlbum.getJSONObject("album").getString("value"));
         album.setName(jsonAlbum.getJSONObject("albumname").getString("value"));
         translateReleaseDate(jsonAlbum, album);
-        album.setInfo(jsonAlbum.getJSONObject("url").getString("value"));
         return album;
     }
 
     @Override
     protected Album emptyQueryResult() {
         return new Album();
+    }
+
+    private void searchForAlbumReviews(Album album) {
+        album.getReviews().addAll(ReviewSparqlQuery.getInstance().searchByAlbum(album.getId()));
     }
 }

@@ -35,7 +35,7 @@ prefix km-dev: <http://isi.edu/integration/karma/dev#>
 select ?artistname (CONCAT( "http://en.wikipedia.org/wiki?curid=", ?wikiid) as ?wikipage ) ?id
 where {
 { BIND("{0}" AS ?id) } .
-?artist a <http://dbpedia.org/ontology/MusicalArtist> .
+    ?artist a <http://dbpedia.org/ontology/MusicalArtist> .
 ?artist owl:sameAs "http://musicbrainz.org/artist/{0}" .
 ?artist rdfs:label ?artistname .
  ?artist <http://dbpedia.org/ontology/wikiPageID> ?wikiid .

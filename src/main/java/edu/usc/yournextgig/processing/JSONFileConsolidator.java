@@ -27,7 +27,7 @@ public class JSONFileConsolidator {
     {
         JSONFileConsolidator thing = new JSONFileConsolidator();
         thing.consolidate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/karma_inputs/consolidatedreviews.json", new JSONIdentityTranslator());
-       
+        thing.consolidate("/Users/jason/projects/yng/scores", "/Users/jason/projects/yng/karma_inputs/consolidatedscores.json", new JSONIdentityTranslator());
     }
     private static Logger LOG = LoggerFactory.getLogger(JSONFileConsolidator.class);
     public void consolidate(String inputDirectory, String outputFileName, JSONTranslator translator) 

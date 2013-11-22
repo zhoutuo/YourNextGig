@@ -32,7 +32,7 @@ prefix rr: <http://www.w3.org/ns/r2rml#>
 prefix km-dev: <http://isi.edu/integration/karma/dev#>
 
 
-select ?albumname ?releaseDate ?url ?album
+select ?albumname ?releaseDate ?album
 where {
 { BIND("http://musicbrainz.org/artist/{0}" AS ?artistid) } .
 ?artist owl:sameAs ?artistmbid .
@@ -41,7 +41,5 @@ FILTER(?artistmbid = ?artistid ) .
 ?artist <http://dbpedia.org/ontology/album> ?album .
 ?album  rdfs:label ?albumname .
 ?album  <http://dbpedia.org/ontology/releaseDate> ?releaseDate .
-OPTIONAL { ?album
-<http://www.openarchives.org/ore/terms/isDescribedBy> ?review .
-?review <http://dbpedia.org/ontology/websiteLabel> ?url } .
+
 }

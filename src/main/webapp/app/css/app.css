@@ -2,3 +2,39 @@
   position: absolute;
   top: 40%;
 }
+
+
+.info {
+	font-family: 'Julius Sans One', sans-serif;
+	text-transform: uppercase;
+}
+
+
+
+.masonry-brick {
+	width: 400px;
+	min-height: 50px;
+	background: white;
+	border-radius: 10px;
+	padding: 10px 1%;
+	margin-bottom: 20px;
+	border: 2px solid #333;
+}
+
+
+.masonry-brick .source {
+	font-size: 20px;
+}
+
+.masonry-brick .grade {
+	background: #00FFFF;
+	border-color: hsla(0, 0%, 0%, 0.5);
+	font-size: 18px;
+}
+
+
+.masonry-brick .critic_review {
+	background: #D26;
+	padding: 10px;
+	font-size: 15px;
+}

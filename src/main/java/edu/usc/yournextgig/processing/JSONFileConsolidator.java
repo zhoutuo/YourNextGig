@@ -21,16 +21,16 @@ import org.slf4j.LoggerFactory;
  *
  * @author jason
  */
-public class JSONFileToCsvTranslator {
+public class JSONFileConsolidator {
     
     public static void main(String[] args)
     {
-        JSONFileToCsvTranslator thing = new JSONFileToCsvTranslator();
-        thing.translate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/karma_inputs/artistTopAlbums.csv", new FreebaseArtistsToCsvTranslator());
-        thing.translate("/Users/jason/projects/yng/metacritic", "/Users/jason/projects/yng/karma_inputs/reviews.csv", new MetacriticReviewsByArtistToCsvTranslator());
+        JSONFileConsolidator thing = new JSONFileConsolidator();
+        thing.consolidate("/Users/jason/projects/yng/review", "/Users/jason/projects/yng/karma_inputs/consolidatedreviews.json", new JSONIdentityTranslator());
+        thing.consolidate("/Users/jason/projects/yng/scores", "/Users/jason/projects/yng/karma_inputs/consolidatedscores.json", new JSONIdentityTranslator());
     }
-    private static Logger LOG = LoggerFactory.getLogger(JSONFileToCsvTranslator.class);
-    public void translate(String inputDirectory, String outputFileName, JSONtoCSVTranslator translator) 
+    private static Logger LOG = LoggerFactory.getLogger(JSONFileConsolidator.class);
+    public void consolidate(String inputDirectory, String outputFileName, JSONTranslator translator) 
     {
         File inputDir = new File(inputDirectory);
         if(!inputDir.isDirectory())
@@ -50,7 +50,7 @@ public class JSONFileToCsvTranslator {
         FileWriter csvOutputWriter;
         try { 
              csvOutputWriter = new FileWriter(outputFile);
-             translator.writeColumnHeaders(csvOutputWriter);
+            csvOutputWriter.write("[");     
         } catch (IOException ex) {
            LOG.error("Unable to create output file ", ex);
            return;
@@ -64,13 +64,15 @@ public class JSONFileToCsvTranslator {
             }
         });
         
-        for(File f : jsonFiles)
+        for(int i = 0; i < jsonFiles.length; i++)
         {
+            File f = jsonFiles[i];
             Reader reader = null;
             try {
                 StringBuilder jsonBuffer = new StringBuilder();
                 CharBuffer rawJsonBuffer = CharBuffer.allocate(1000);
                 reader = new BufferedReader(new FileReader(f));
+               
                 int numRead = 0;
                 while(-1 != (numRead = reader.read(rawJsonBuffer)))
              
@@ -80,6 +82,11 @@ public class JSONFileToCsvTranslator {
                     
                 }
                 translator.translateJSON(jsonBuffer.toString(), csvOutputWriter);
+                csvOutputWriter.flush();
+                if(i < jsonFiles.length -1)
+                {
+                    csvOutputWriter.append(",\n");
+                }
                 
             } catch (FileNotFoundException ex) {
                LOG.error("Input file doesn't exist " + f.getAbsolutePath(), ex);
@@ -98,9 +105,9 @@ public class JSONFileToCsvTranslator {
                     LOG.error("Unable to close reader  ", ex);
                 }
             }
-            
         }
         try {
+            csvOutputWriter.append("]");
             csvOutputWriter.close();
         } catch (IOException ex) {
             LOG.error("unable to close csv writer", ex);

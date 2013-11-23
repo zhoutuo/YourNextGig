@@ -14,29 +14,87 @@
             "format": "date-time",
             "type": "string"
         },
-        "performers": {
+        "artists": {
             "type": "array",
-            "items": { "$ref": "#/definitions/performer" }
+            "items": { "$ref": "#/definitions/artist" }
         }
     },
     "definitions": {
+        "location" : {
+            "description" : "A location",
+            "type": "object",
+            "properties": {
+                "geo": { "$ref": "http://json-schema.org/geo" },
+                "city": { "type": "string" },
+                "state": { "type": "string" },   
+                "country": { "type": "string" }
+            }
+        },
         "venue" : {
             "description": "A venue",
             "type": "object",
             "properties": {
-                "geo": { "$ref": "http://json-schema.org/geo" },
+                "location": { "$ref": "#/definitions/location" },
                 "name": { "type": "string" },
                 "info":{ "type": "string" },
                 "id": {"type": "string" }
             }
         },
-        "performer" : {
-            "description": "A performer",
+        "award" : {
+            "description": "An award",
+            "type": "object",
+            "properties": {
+                 "name": { "type": "string" },
+                 "date": {
+                    "format": "date-time",
+                    "type": "string"
+                }
+            }
+        },
+        "review" : {
+            "description": "A review",
+            "type": "object",
+            "properties": {
+                "grade": {"type": "string" }, 
+                "review": {"type": "string" }, 
+                "source": {"type": "string" } 
+            }
+        },
+        "album" : {
+            "description": "An album",
+            "type": "object",
+            "properties": {
+                 "name": { "type": "string" },
+                "id": {"type": "string" }, 
+                "releaseDate": {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "awards": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/award" }
+                },
+                "reviews": {
+                      "type": "array",
+                    "items": { "$ref": "#/definitions/review" }
+                }
+            }
+        },
+        "artist" : {
+            "description": "An artist",
             "type": "object",
             "properties": {
                 "name": {"type": "string" },
                 "id": {"type": "string" },
-                "info":{ "type": "string" }
+                "info":{ "type": "string" },
+                "albums": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/album" }
+                },
+                "awards": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/award" }
+                }
             }
         }
     }

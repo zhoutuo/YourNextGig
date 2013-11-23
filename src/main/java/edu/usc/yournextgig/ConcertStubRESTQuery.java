@@ -14,8 +14,8 @@ import org.json.JSONObject;
  *
  * @author jason
  */
-@Path("/concert")
-public class StubConcertQuery implements ConcertQuery {
+@Path("/stubconcert")
+public class ConcertStubRESTQuery implements ConcertRESTQuery {
 
     @Override
     public Response search(Double lat, Double lon, Long starttime, Long endtime) {
@@ -28,19 +28,29 @@ public class StubConcertQuery implements ConcertQuery {
         Venue venue = new Venue();
         venue.setId("987654");
         venue.setInfo("a good place");
+        Location location = new Location();
+        location.setCity("Los Angeles");
+        location.setCountry("USA");
+        location.setState("CA");
         Geo geo = new Geo();
         geo.setLatitude(45.0);
         geo.setLongitude(-118.0);
-        venue.setGeo(geo);
+        location.setGeo(geo);
+        venue.setLocation(location);
         venue.setName("The Greek Theater");
         concert.setVenue(venue);
-        Performer performer = new Performer();
-        performer.setId("5553333");
-        performer.setInfo("a good band");
-        performer.setName("The Beatles");
-        concert.getPerformers().add(performer);
+        Artist artist = new Artist();
+        artist.setId("5553333");
+        artist.setInfo("a good band");
+        artist.setName("The Beatles");
+        concert.getArtists().add(artist);
         JSONObject obj = new JSONObject(concert);
         return Response.ok(obj.toString(), MediaType.APPLICATION_JSON).build();
+    }
+
+    @Override
+    public Response search(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

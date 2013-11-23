@@ -16,15 +16,14 @@ import org.slf4j.LoggerFactory;
  *
  * @author jason
  */
-public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
-    private static Logger LOG = LoggerFactory.getLogger(LastFmArtistToCsvTranslator.class);
+public class FreebaseMetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
+    private static Logger LOG = LoggerFactory.getLogger(FreebaseMetacriticReviewsToCsvTranslator.class);
      public void translateJSON(String json, FileWriter csvOutputWriter) throws JSONException, IOException {
         ReleaseDateFormatter dateFormatter = ReleaseDateFormatter.createDefaultReleaseDateFormatter();
         ArtistNameFormatter artistFormatter = new ArtistNameFormatter();
         AlbumNameFormatter albumFormatter = new AlbumNameFormatter();
-    
         JSONObject artistInfo = new JSONObject(json);
-        JSONArray topAlbums = artistInfo.getJSONArray("topAlbums");
+        JSONArray topAlbums = artistInfo.getJSONArray("/music/artist/album");
         for(int i = 0; i < topAlbums.length(); i++)
         {
             JSONObject album = topAlbums.getJSONObject(i);
@@ -39,14 +38,13 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
                 String albumName = album.getString("name");
                 candidateBuilder.append(albumFormatter.formatAlbumName(albumName));
                 candidateBuilder.append(",");
-                if(album.has("releaseDate"))
+                if(album.has("/music/album/release_date"))
                 {
-                    
-                    String dateString = album.get("releaseDate").toString();
+                    String dateString = album.get("/music/album/release_date").toString();
                     candidateBuilder.append(dateFormatter.formatReleaseDate(dateString));
                     candidateBuilder.append(",");
                 }
-                 final String candidateArtistName = candidate.getString("artist");
+                final String candidateArtistName = candidate.getString("artist");
                 candidateBuilder.append(artistFormatter.formatArtistName(candidateArtistName));
                 candidateBuilder.append(",");
                 final String candidateAlbumName = candidate.getString("name");
@@ -55,7 +53,6 @@ public class MetacriticReviewsToCsvTranslator implements JSONtoCSVTranslator{
                 String dateString =candidate.get("releaseDate").toString().trim();
                 candidateBuilder.append(dateFormatter.formatReleaseDate(dateString));
                 candidateBuilder.append(",");
-               
                 candidateBuilder.append(candidate.get("url"));
 
                 candidateBuilder.append("\n");

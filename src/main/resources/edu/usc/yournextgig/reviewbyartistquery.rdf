@@ -1,0 +1,47 @@
+prefix status: <http://metadataregistry.org/uri/RegStatus/>
+prefix ns4: <http://www.w3.org/ns/prov#>
+prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#>
+prefix schema: <http://schema.org/>
+prefix aac-ont: <http://www.americanartcollaborative.org/ontology/>
+prefix reg: <http://metadataregistry.org/uri/profile/RegAp/>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix foaf: <http://xmlns.com/foaf/0.1/>
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix DOLCE-Lite: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#>
+prefix dcmitype: <http://purl.org/dc/dcmitype/>
+prefix wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+prefix FRBRentitiesRDA: <http://rdvocab.info/uri/schema/FRBRentitiesRDA/>
+prefix saam-ont: <http://americanart.si.edu/ontology/>
+prefix wot: <http://xmlns.com/wot/0.1/>
+prefix edm: <http://www.europeana.eu/schemas/edm/>
+prefix dc: <http://purl.org/dc/elements/1.1/>
+prefix ElementsGr2: <http://rdvocab.info/ElementsGr2/>
+prefix skos: <http://www.w3.org/2008/05/skos#>
+prefix crm: <http://www.cidoc-crm.org/rdfs/cidoc-crm#>
+prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#>
+prefix frbr_core: <http://purl.org/vocab/frbr/core#>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix ore: <http://www.openarchives.org/ore/terms/>
+prefix abc: <http://metadata.net/harmony/abc#>
+prefix dcam: <http://purl.org/dc/dcam/>
+prefix rdfg: <http://www.w3.org/2004/03/trix/rdfg-1/>
+prefix dbpedia-owl: <http://dbpedia.org/ontology/>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix rr: <http://www.w3.org/ns/r2rml#>
+prefix km-dev: <http://isi.edu/integration/karma/dev#>
+
+
+select ?author ?description ?rating
+where {
+{ BIND(IRI("{0}") AS ?album) } .
+?album a <http://dbpedia.org/ontology/Album>  ;
+  rdfs:label ?albumname ;
+  <http://dbpedia.org/ontology/releaseDate> ?releaseDate .
+ ?album <http://www.openarchives.org/ore/terms/isDescribedBy> ?reviewcollection .
+?reviewcollection <http://dbpedia.org/ontology/isPartOf> ?review  .
+?review dcterms:contributor ?author .
+?review dbpedia-owl:description ?description .
+?review dbpedia-owl:rating ?rating .
+
+}

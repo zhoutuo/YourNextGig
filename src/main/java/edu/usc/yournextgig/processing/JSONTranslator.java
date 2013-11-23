@@ -6,11 +6,12 @@ package edu.usc.yournextgig.processing;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import org.json.JSONException;
+
 /**
  *
  * @author jason
  */
-public interface JSONtoCSVTranslator extends JSONTranslator{
-    public void writeColumnHeaders(FileWriter csvOutputWriter) throws IOException;
-    
+public interface JSONTranslator {
+    public void translateJSON(String json, FileWriter outputWriter) throws JSONException, IOException;
 }

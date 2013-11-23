@@ -14,10 +14,14 @@ import javax.ws.rs.core.Response;
  *
  * @author jason
  */
-public interface ConcertQuery {
+public interface ReviewRESTQuery {
+      @GET
+    @Produces("application/json")
+    public Response search(@QueryParam("id") String id);
     
     @GET
+    @Path("/artist")
     @Produces("application/json")
-    public Response search(@QueryParam("lat") Double lat, @QueryParam("lon") Double lon,
-    @QueryParam("starttime") Long starttime, @QueryParam("endtime") Long endtime);
+    public Response searchByAlbum(@QueryParam("albumId") String albumId);
+    
 }

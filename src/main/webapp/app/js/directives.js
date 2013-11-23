@@ -17,13 +17,4 @@ angular.module('yng.directives', [])
   			});
   		}
   	}
- }])
-.directive('tiles', [function() {
-    return {
-        restrict: 'E',
-        templateUrl: "partials/tiles.html",
-        scope: true,
-        link: function(scope, element, attrs) {
-        }
-    }
-}]);
+ }]);

@@ -52,10 +52,6 @@ public class ReviewSparqlQuery extends SparqlQuery<Review> {
     
     public List<Review> searchByAlbum(String albumId)
     {
-        SesameTool sesame = SesameTool.getInstance();
-        String searchString = this.loadSearchString("reviewbyartistquery.rdf");
-        String populatedString = searchString.replace("{0}", albumId);
-        JSONArray result = sesame.queryForData(populatedString);
-        return translateQueryResults(result);
+        return searchForMultipleResults(albumId, "reviewbyartistquery.rdf");
     }
 }

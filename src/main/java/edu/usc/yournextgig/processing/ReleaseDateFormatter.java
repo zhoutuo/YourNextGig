@@ -27,26 +27,37 @@ public class ReleaseDateFormatter {
     }
 
     public String formatReleaseDate(String dateString) {
-        dateString = dateString.toString().replace(", 00:00", "").replace(',', ' ').trim();
-        SimpleDateFormat newDf = new SimpleDateFormat("MM/dd/yyyy");
         String dateResult = " ";
-        if (null != dateString && !dateString.isEmpty()) {
-            Date d;
-            for (DateFormat df : sourceDateFormats) {
-                try {
-                    d = df.parse(dateString);
-                    dateResult = newDf.format(d);
-
-                } catch (ParseException ex) {
-
-                    LOG.debug("unable to parse date", ex);
-                }
-            }
-
+        SimpleDateFormat newDf = new SimpleDateFormat("MM/dd/yyyy");
+        Date d = parseDate(dateString);
+        if(d != null)
+        {
+            dateResult = newDf.format(d);
         }
         return dateResult;
     }
     
+    public Date parseDate(String dateString)
+    {
+      dateString = dateString.toString().replace(", 00:00", "").replace(',', ' ').trim();
+        
+        
+        Date d = null;
+        if (null != dateString && !dateString.isEmpty()) {
+            
+            for (DateFormat df : sourceDateFormats) {
+                try {
+                    d = df.parse(dateString);
+                    
+                } catch (Exception ex) {
+
+                    LOG.trace("unable to parse date", ex);
+                }
+            }
+
+        }
+        return d;
+    }
     public static ReleaseDateFormatter createDefaultReleaseDateFormatter() {
         List<DateFormat> formats = new ArrayList<DateFormat>();
         formats.add(new SimpleDateFormat("yyyy-MM-dd"));        

@@ -32,22 +32,13 @@ prefix rr: <http://www.w3.org/ns/r2rml#>
 prefix km-dev: <http://isi.edu/integration/karma/dev#>
 
 
-select ?venue ?name ?lat ?lon ?cityname ?statename ?countryname ?id
+select ?awardname ?awarddate
 where {
-{ BIND("{0}" AS ?eventid) } .
-?event a <http://dbpedia.org/ontology/Event>  .
-?event <http://dbpedia.org/ontology/id> ?eventid .
-?event <http://dbpedia.org/ontology/building> ?venue . 
-?venue a <http://dbpedia.org/ontology/Venue> ;
- rdfs:label ?name .
-?venue <http://dbpedia.org/ontology/id> ?id .
-?venue<http://www.w3.org/2003/01/geo/wgs84_pos#location> ?location .
-?location <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat .
-?location <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?lon .
-OPTIONAL { ?location <http://dbpedia.org/ontology/city> ?city .
-?city rdfs:label ?cityname . }
-OPTIONAL { ?location <http://dbpedia.org/ontology/state> ?state .
-?state rdfs:label ?statename . }
-OPTIONAL { ?location <http://dbpedia.org/ontology/country> ?country .
-?country rdfs:label ?countryname . }
+{ BIND("{0}" AS ?id) } .
+    ?artist a <http://dbpedia.org/ontology/MusicalArtist> .
+?artist owl:sameAs "http://musicbrainz.org/artist/{0}" .
+?artist dbpedia-owl:award ?award .
+?award rdfs:label ?awardname .
+OPTIONAL { ?award dbpedia-owl:date ?awarddate . }
+
 }

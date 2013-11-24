@@ -4,9 +4,6 @@
  */
 package edu.usc.yournextgig;
 
-import java.text.ParseException;
-import java.util.List;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -38,11 +35,7 @@ public class VenueSparqlQuery extends SparqlQuery<Venue> {
 
     protected Venue searchByEvent(String eventId)
     {
-        SesameTool sesame = SesameTool.getInstance();
-        String searchString = this.loadSearchString("venuebyeventquery.rdf");
-        String populatedString = searchString.replace("{0}", eventId);
-        JSONArray result = sesame.queryForData(populatedString);
-        return translateQueryResult(result);
+        return search(eventId, "venuebyeventquery.rdf");
     }
     @Override
     protected Venue translateQueryResult(JSONObject jsonVenue) throws JSONException {

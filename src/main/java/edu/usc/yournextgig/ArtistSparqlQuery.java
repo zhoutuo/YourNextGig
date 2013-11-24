@@ -35,6 +35,7 @@ public class ArtistSparqlQuery extends SparqlQuery<Artist> {
     public Artist search(String id) {
         Artist artist = super.search(id);
         searchForArtistAlbums(artist);
+        searchForArtistAwards(artist);
         return artist;
         
     }
@@ -46,21 +47,15 @@ public class ArtistSparqlQuery extends SparqlQuery<Artist> {
     private String searchByEventString = null;
 
     public List<Artist> searchByEvent(String eventId) {
-
-        SesameTool sesame = SesameTool.getInstance();
-        searchByEventString = loadSearchString("artistbyeventquery.rdf");
-        String populatedString = searchByEventString.replace("{0}", eventId);
-        LOG.trace(populatedString);
-        JSONArray result = sesame.queryForData(populatedString);
-        LOG.trace(result.toString());
-        List<Artist> artists = translateQueryResults(result);
+        List<Artist> artists = searchForMultipleResults(eventId, "artistbyeventquery.rdf");
+  
         for(Artist artist : artists)
         {
            searchForArtistAlbums(artist);
+           searchForArtistAwards(artist);
         }
         return artists;
-        
-
+       
     }
 
     @Override
@@ -85,5 +80,9 @@ public class ArtistSparqlQuery extends SparqlQuery<Artist> {
         List<Album> albums = AlbumSparqlQuery.getInstance().searchByArtist(artist.getId());
         artist.getAlbums().addAll(albums);
         }
+    }
+
+    private void searchForArtistAwards(Artist artist) {
+        artist.getAwards().addAll(AwardSparqlQuery.getInstance().searchByArtist(artist.getId()));
     }
 }

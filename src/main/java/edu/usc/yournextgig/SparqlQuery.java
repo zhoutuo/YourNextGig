@@ -26,14 +26,29 @@ public abstract class SparqlQuery<E> {
     private final Map<String, String> queryStrings = new HashMap<String, String>();
     
     public E search(String id) {
+        String queryStringFileName = getQueryStringFileName();
+        return search(id, queryStringFileName);
+    }
+    
+    protected E search(String id, String queryStringFileName) {
         SesameTool sesame = SesameTool.getInstance();
-        String searchString = this.loadSearchString(getQueryStringFileName());
+        String searchString = loadSearchString(queryStringFileName);
         String populatedString = searchString.replace("{0}", id);
+        LOG.trace(populatedString);
         JSONArray result = sesame.queryForData(populatedString);
         return translateQueryResult(result);
     }
+
+    protected List<E> searchForMultipleResults(String id, String queryStringFileName) {
+        SesameTool sesame = SesameTool.getInstance();
+        String searchString = loadSearchString(queryStringFileName);
+        String populatedString = searchString.replace("{0}", id);
+        LOG.trace(populatedString);
+        JSONArray result = sesame.queryForData(populatedString);
+        return translateQueryResults(result);
+    }
     
-      public String loadSearchString(String fileName)
+    public String loadSearchString(String fileName)
     {
         if(queryStrings.containsKey(fileName))
         {
@@ -93,4 +108,5 @@ public abstract class SparqlQuery<E> {
     protected abstract E translateQueryResult(JSONObject object) throws JSONException;
     
     protected abstract String getQueryStringFileName();
+
 }

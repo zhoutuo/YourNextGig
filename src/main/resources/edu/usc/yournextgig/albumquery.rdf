@@ -38,6 +38,9 @@ where {
 ?album a <http://dbpedia.org/ontology/Album>  ;
   rdfs:label ?albumname ;
   <http://dbpedia.org/ontology/releaseDate> ?releaseDate .
-
+OPTIONAL {
+?album <http://www.openarchives.org/ore/terms/isDescribedBy> ?reviewcollection .
+?reviewcollection dbpedia-owl:rating ?rating . 
+}
 
 }

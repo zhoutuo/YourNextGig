@@ -48,4 +48,3 @@ OPTIONAL { ?location <http://dbpedia.org/ontology/state> ?state .
 OPTIONAL { ?location <http://dbpedia.org/ontology/country> ?country .
 ?country rdfs:label ?countryname . }
 }
-limit 100

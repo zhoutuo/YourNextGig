@@ -65,6 +65,7 @@
             "type": "object",
             "properties": {
                  "name": { "type": "string" },
+                 "rating": { "type": "string" },
                 "id": {"type": "string" }, 
                 "releaseDate": {
                     "format": "date-time",

@@ -79,6 +79,10 @@ public class AlbumSparqlQuery extends SparqlQuery<Album> {
                 Album album = new Album();
         album.setId(jsonAlbum.getJSONObject("album").getString("value"));
         album.setName(jsonAlbum.getJSONObject("albumname").getString("value"));
+        if(jsonAlbum.has("rating"))
+        {
+            album.setRating(jsonAlbum.getJSONObject("rating").getString("value"));
+        }
         translateReleaseDate(jsonAlbum, album);
         return album;
     }

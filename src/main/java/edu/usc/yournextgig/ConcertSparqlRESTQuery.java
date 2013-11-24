@@ -4,6 +4,7 @@
  */
 package edu.usc.yournextgig;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import javax.ws.rs.Path;
@@ -38,7 +39,13 @@ public class ConcertSparqlRESTQuery implements ConcertRESTQuery {
         LOG.trace("stop: " + endtime);
         ConcertSparqlQuery instance = ConcertSparqlQuery.getInstance();
         List<Concert> concerts = instance.searchByLocation(lat, lon, new Date(starttime), new Date(endtime));
-        JSONArray results = new JSONArray(concerts);
+        Collections.sort(concerts, new ConcertComparator());
+        
+        JSONArray results = new JSONArray();
+        for(int i = 0; i < 10 && i< concerts.size(); i++)
+        {
+            results.put(new JSONObject(concerts.get(i)));
+        }
         return Response.ok(results.toString(), MediaType.APPLICATION_JSON).build();
     }
     

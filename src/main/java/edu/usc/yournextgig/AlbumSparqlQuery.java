@@ -87,10 +87,18 @@ public class AlbumSparqlQuery extends SparqlQuery<Album> {
     }
 
     private void searchForAlbumReviews(Album album) {
+        if(!album.getReviews().isEmpty())
+        {
+            return;
+        }
         album.getReviews().addAll(ReviewSparqlQuery.getInstance().searchByAlbum(album.getId()));
     }
 
     private void searchForAlbumAwards(Album album) {
+        if(!album.getAwards().isEmpty())
+        {
+            return;
+        }
         album.getAwards().addAll(AwardSparqlQuery.getInstance().searchByAlbum(album.getId()));
     }
 }

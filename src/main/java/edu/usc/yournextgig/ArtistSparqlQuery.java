@@ -5,7 +5,6 @@
 package edu.usc.yournextgig;
 
 import java.util.List;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -77,12 +76,20 @@ public class ArtistSparqlQuery extends SparqlQuery<Artist> {
     private void searchForArtistAlbums(Artist artist) {
         if(artist != null&& artist.getId() != null)
         {
-        List<Album> albums = AlbumSparqlQuery.getInstance().searchByArtist(artist.getId());
-        artist.getAlbums().addAll(albums);
+            if(!artist.getAlbums().isEmpty())
+            {
+                return;
+            }
+            List<Album> albums = AlbumSparqlQuery.getInstance().searchByArtist(artist.getId());
+            artist.getAlbums().addAll(albums);
         }
     }
 
     private void searchForArtistAwards(Artist artist) {
+        if(!artist.getAwards().isEmpty())
+        {
+            return;
+        }
         artist.getAwards().addAll(AwardSparqlQuery.getInstance().searchByArtist(artist.getId()));
     }
 }

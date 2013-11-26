@@ -2,44 +2,46 @@
 	<div class="col-md-8 col-md-offset-2 info">
 		<div class="row">
 			<div class="col-md-6">
-				<h3>Artisti Name</h3>
+				<h3>{{}}<span class="label label-default">Artist</span></h3>
 			</div>
 			<div class="col-md-6">
-				<h3>Album Name</h3>
+				<h3>{{}}<span class="label label-primary">Album</span></h3>
 			</div>
 		</div>
 	</div>
 	<div class="col-md-8 col-md-offset-2 score">
 		<div class="row">
 			<div class="col-md-6">
-				<h4>Metacritic Score: </h4>
+				<h4>{{}}<span class="label label-success">Metacritic Score</span></h4>
 			</div>
 			<div class="col-md-6">
-				<h4>User Score: </h4>
+				<h4>{{}}<span class="label label-info">User Score</span></h4>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-2 critic">
-			<div class="masonry-brick">
-				<div class="source">
-					Source: Entertainment Weekly
+			<div class="panel panel-primary" ng-repeat="review in critic_reviews">
+				<div class="panel-heading">
+					<h5 class="panel-title">{{review.source}}</h5>
 				</div>
-				<div class="grade">
-					Grade: 10
-				</div>
-				<div class="critic_review">
-					Review: His talent for crafting little pop perfections of all stripes is undeniable.
+				<div class="panel-body">
+					<div class="grade">
+						Grade: {{review.grade}}
+					</div>
+					<div class="critic_review">
+						Review: {{reivew.review}}
+					</div>
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4 user">
-			<div class="masonry-brick">
-				<div class="source">
-					A User Name
+			<div class="panel panel-success" ng-repeat="review in user_reviews">
+				<div class="panel-heading">
+					<h5 class="panel-title">{{review.source}}</h5>
 				</div>
-				<div class="grade">
-					Grade: 9
+				<div class="panel-body">
+					Grade: {{review.grade}}
 				</div>
 			</div>
 		</div>

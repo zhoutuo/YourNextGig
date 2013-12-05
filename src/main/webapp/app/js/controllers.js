@@ -99,37 +99,49 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location',
 				}
 			}).success(function(data) {
 				info = "http://en.wikipedia.org/wiki/" + data.query.pages[curid].title.replace(' ', '_');
-				var timelineJson = {
-					"timeline": {
-						"headline": artist.name,
-						"text": " ",
-						"type": "default",
-						"asset": {
-							"media": info
-						},
-						"date": []
+				$http.jsonp("http://ws.audioscrobbler.com/2.0/?callback=JSON_CALLBACK", {
+					params: {
+						api_key: "ff0d1870597c44a71ccb5ea4afbc0a4d",
+						method: "artist.getinfo",
+						artist: artist.name,
+						format: 'json'
 					}
-				};
+				}).success(function(lastfm, status) {
+					var profile = lastfm.artist.image[3]['#text'];
+					var timelineJson = {
+						"timeline": {
+							"headline": "<img src='" + profile + "' height='250'>",
+							"text": " ",
+							"type": "default",
+							"asset": {
+								"media": info
+							},
+							"date": []
+						}
+					};
 
-				var albums = artist.albums;
-				var awards = artist.awards;
+					var albums = artist.albums;
+					var awards = artist.awards;
 
-				for (var i = albums.length - 1; i >= 0; i--) {
-					var album = albums[i];
-					timelineJson.timeline.date.push({
-						"startDate": moment(album.releaseDate).format("MM/D/YYYY"),
-						"headline": "<a href='#/reviews?id=" + album.id + "'>" + album.name + "</a>"
-					});
-				}
+					for (var i = albums.length - 1; i >= 0; i--) {
+						var album = albums[i];
+						timelineJson.timeline.date.push({
+							"startDate": moment(album.releaseDate).format("MM/D/YYYY"),
+							"headline": "<a href='#/reviews?id=" + album.id + "'>" + album.name + "</a>"
+						});
+					}
 
-				for (var i = awards.length - 1; i >= 0; i--) {
-					var award = awards[i];
-					timelineJson.timeline.date.push({
-						"startDate": moment(award.date).format("MM/D/YYYY"),
-						"headline": award.name
-					});
-				}	
-				$scope.$broadcast('showTimeline', timelineJson);
+					for (var i = awards.length - 1; i >= 0; i--) {
+						var award = awards[i];
+						timelineJson.timeline.date.push({
+							"startDate": moment(award.date).format("MM/D/YYYY"),
+							"headline": award.name
+						});
+					}
+					$scope.$broadcast('showTimeline', timelineJson);
+
+				});
+
 
 			});
 

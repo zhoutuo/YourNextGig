@@ -37,7 +37,6 @@ public class AwardSparqlRESTQuery implements AwardRESTQuery {
         return Response.ok(results.toString(), MediaType.APPLICATION_JSON).build();
     }
 
-    @Override
     public Response searchByAlbum(String albumId) {
         LOG.trace(albumId);
         AwardSparqlQuery instance = AwardSparqlQuery.getInstance();

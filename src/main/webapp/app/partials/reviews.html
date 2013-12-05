@@ -1,45 +1,28 @@
-<div class="row" id='tiles_container'>
+<div id='tiles_container'>
 	<div class="col-md-8 col-md-offset-2 info">
-		<div class="row">
-			<div class="col-md-6">
-				<h3>Artisti Name</h3>
-			</div>
-			<div class="col-md-6">
-				<h3>Album Name</h3>
-			</div>
-		</div>
+		<h3><span class="label label-primary">Album</span> {{name}}</h3>
 	</div>
 	<div class="col-md-8 col-md-offset-2 score">
 		<div class="row">
 			<div class="col-md-6">
-				<h4>Metacritic Score: </h4>
-			</div>
+				<h4><span class="label label-default">Release Date</span> {{date}}</h4>
+			</div>			
 			<div class="col-md-6">
-				<h4>User Score: </h4>
+				<h4><span class="label label-success">Rating</span> {{rating}}</h4>
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-4 col-md-offset-2 critic">
-			<div class="masonry-brick">
-				<div class="source">
-					Source: Entertainment Weekly
-				</div>
+	<div class="col-md-8 col-md-offset-2 critic">
+		<div class="panel panel-primary" ng-repeat="re in reviews">
+			<div class="panel-heading">
+				<h5 class="panel-title">{{re.source}}</h5>
+			</div>
+			<div class="panel-body">
 				<div class="grade">
-					Grade: 10
+					<span class="label label-warning">Grade</span> {{re.grade}}
 				</div>
 				<div class="critic_review">
-					Review: His talent for crafting little pop perfections of all stripes is undeniable.
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4 user">
-			<div class="masonry-brick">
-				<div class="source">
-					A User Name
-				</div>
-				<div class="grade">
-					Grade: 9
+					<span class="label label-danger">Review</span> {{re.review}}
 				</div>
 			</div>
 		</div>

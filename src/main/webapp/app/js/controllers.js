@@ -81,53 +81,96 @@ controllers.controller('concertsCtrl', ['$scope', '$http', '$location',
 		});
 	}
 ]);
-controllers.controller('artistCtrl', ['$scope', '$http', '$location',
-	function($scope, $http, $location) {
-		$http.get('/YourNextGig/api/stubartist', {
-			params: {
-				id: $location.search().id
-			}
-		}).success(function(artist, status) {
-			var info = artist.info;
-			var curid = info.split('=')[1];
-
-			$http.jsonp("http://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK", {
+controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
+		function($scope, $http, $location, $q) {
+			$http.get('/YourNextGig/api/stubartist', {
 				params: {
-					action: "query",
-					pageids: curid,
-					format: "json"
+					id: $location.search().id
 				}
-			}).success(function(data) {
-				info = "http://en.wikipedia.org/wiki/" + data.query.pages[curid].title.replace(' ', '_');
-				$http.jsonp("http://ws.audioscrobbler.com/2.0/?callback=JSON_CALLBACK", {
-					params: {
-						api_key: "ff0d1870597c44a71ccb5ea4afbc0a4d",
-						method: "artist.getinfo",
-						artist: artist.name,
-						format: 'json'
+			}).success(function(artist, status) {
+
+				function getinfo(artist) {
+					var deferred = $q.defer();
+					var albums = artist.albums;
+					var signal = 2 + albums.length;
+
+					var info = artist.info;
+					var curid = info.split('=')[1];
+					var profile_link = null;
+
+
+					function then() {
+						--signal;
+						if (signal == 0) {
+							deferred.resolve(artist);
+						}
 					}
-				}).success(function(lastfm, status) {
-					var profile = lastfm.artist.image[3]['#text'];
+
+					$http.jsonp("http://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK", {
+						params: {
+							action: "query",
+							pageids: curid,
+							format: "json"
+						}
+					}).success(function(data) {
+						artist.info = "http://en.wikipedia.org/wiki/" + data.query.pages[curid].title.replace(' ', '_');
+					}).then(then);
+
+					$http.jsonp("http://ws.audioscrobbler.com/2.0/?callback=JSON_CALLBACK", {
+						params: {
+							api_key: "ff0d1870597c44a71ccb5ea4afbc0a4d",
+							method: "artist.getinfo",
+							artist: artist.name,
+							format: 'json'
+						}
+					}).success(function(lastfm, status) {
+						artist.profile_link = lastfm.artist.image[3]['#text'];
+					}).then(then);
+
+					for (var i = albums.length - 1; i >= 0; i--) {
+						var album = albums[i];
+						$http.jsonp("http://ws.audioscrobbler.com/2.0/?callback=JSON_CALLBACK", {
+							params: {
+								api_key: "ff0d1870597c44a71ccb5ea4afbc0a4d",
+								method: "album.getinfo",
+								artist: artist.name,
+								album: album.name,
+								format: 'json'
+							}
+						}).success(function(lastfm, status) {
+							album.cover_link = lastfm.album.image[3]['#text'];
+						}).then(then);
+
+					};
+
+					return deferred.promise;
+				}
+
+				var promise = getinfo(artist);
+				promise.then(function(new_artist) {
 					var timelineJson = {
 						"timeline": {
-							"headline": "<img src='" + profile + "' height='250'>",
+							"headline": "<img src='" + new_artist.profile_link + "' height='250'>",
 							"text": " ",
 							"type": "default",
 							"asset": {
-								"media": info
+								"media": new_artist.info
 							},
 							"date": []
 						}
 					};
 
-					var albums = artist.albums;
-					var awards = artist.awards;
+					var albums = new_artist.albums;
+					var awards = new_artist.awards;
 
 					for (var i = albums.length - 1; i >= 0; i--) {
 						var album = albums[i];
 						timelineJson.timeline.date.push({
 							"startDate": moment(album.releaseDate).format("MM/D/YYYY"),
-							"headline": "<a href='#/reviews?id=" + album.id + "'>" + album.name + "</a>"
+							"headline": "<a href='#/reviews?id=" + album.id + "'>" + album.name + "</a>",
+							"asset": {
+								"media": album.cover_link
+							}
 						});
 					}
 
@@ -142,17 +185,9 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location',
 
 				});
 
-
 			});
 
-
-
-		});
-
-
-
-	}
-]);
+}]);
 controllers.controller('reviewsCtrl', ['$scope', '$http', '$location',
 	function($scope, $http, $location) {
 		$http.get('/YourNextGig/api/stubalbum', {

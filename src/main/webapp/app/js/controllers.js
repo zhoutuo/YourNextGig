@@ -83,10 +83,9 @@ controllers.controller('concertsCtrl', ['$scope', '$http', '$location',
 ]);
 controllers.controller('artistCtrl', ['$scope', '$http', '$location',
 	function($scope, $http, $location) {
-
 		$http.get('/YourNextGig/api/stubartist', {
 			params: {
-				id: 1
+				id: $location.search().id
 			}
 		}).success(function(artist, status) {
 			var info = artist.info;
@@ -146,14 +145,13 @@ controllers.controller('reviewsCtrl', ['$scope', '$http', '$location',
 	function($scope, $http, $location) {
 		$http.get('/YourNextGig/api/stubalbum', {
 			params: {
-				id: 1
+				id: $location.search().id
 			}
 		}).success(function(data, status) {
 			$scope.name = data.name;
 			$scope.rating = data.rating;
 			$scope.date = moment(data.releaseDate).format("MM/D/YYYY");
 			$scope.reviews = data.reviews;
-			console.log(data.reviews);
 		});
 	}
 ]);

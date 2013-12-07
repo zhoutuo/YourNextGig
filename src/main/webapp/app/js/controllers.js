@@ -31,7 +31,7 @@ controllers.controller('searchCtrl', ['$scope', '$http', '$location',
 ]);
 controllers.controller('concertsCtrl', ['$scope', '$http', '$location',
 	function($scope, $http, $location) {
-		$http.get("/YourNextGig/api/stubconcert/search", {
+		$http.get("/YourNextGig/api/concert/search", {
 			params: {
 				lat: 1.0,
 				lon: 1.0,
@@ -83,7 +83,7 @@ controllers.controller('concertsCtrl', ['$scope', '$http', '$location',
 ]);
 controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
 		function($scope, $http, $location, $q) {
-			$http.get('/YourNextGig/api/stubartist', {
+			$http.get('/YourNextGig/api/artist', {
 				params: {
 					id: $location.search().id
 				}
@@ -162,6 +162,7 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
 
 					var albums = new_artist.albums;
 					var awards = new_artist.awards;
+					var rankings = new_artist.rankings;
 
 					for (var i = albums.length - 1; i >= 0; i--) {
 						var album = albums[i];
@@ -181,6 +182,17 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
 							"headline": award.name
 						});
 					}
+
+
+					for (var i = rankings.length - 1; i >= 0; i--) {
+						var ranking = rankings[i];
+						timelineJson.timelineJson.timeline.date.push({
+							"startDate": moment(ranking.year).format("MM/D/YYYY"),
+							"endDate": moment(ranking.year).add('y', 1).format("MM/D/YYYY"),
+							"headline": "Top " + ranking.ranking + "Artist on Billboard"
+						});
+					};
+
 					$scope.$broadcast('showTimeline', timelineJson);
 
 				});
@@ -190,7 +202,7 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
 }]);
 controllers.controller('reviewsCtrl', ['$scope', '$http', '$location',
 	function($scope, $http, $location) {
-		$http.get('/YourNextGig/api/stubalbum', {
+		$http.get('/YourNextGig/api/album', {
 			params: {
 				id: $location.search().id
 			}

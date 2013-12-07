@@ -35,6 +35,7 @@ public class ArtistSparqlQuery extends SparqlQuery<Artist> {
         Artist artist = super.search(id);
         searchForArtistAlbums(artist);
         searchForArtistAwards(artist);
+        searchForArtistRankings(artist);
         return artist;
         
     }
@@ -91,5 +92,13 @@ public class ArtistSparqlQuery extends SparqlQuery<Artist> {
             return;
         }
         artist.getAwards().addAll(AwardSparqlQuery.getInstance().searchByArtist(artist.getId()));
+    }
+    
+    private void searchForArtistRankings(Artist artist) {
+        if(!artist.getRankings().isEmpty())
+        {
+            return;
+        }
+        artist.getRankings().addAll(BillboardSparqlQuery.getInstance().searchByArtist(artist.getId()));
     }
 }

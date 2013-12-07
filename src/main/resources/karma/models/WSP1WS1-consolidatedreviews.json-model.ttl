@@ -1,0 +1,1243 @@
+@prefix status: <http://metadataregistry.org/uri/RegStatus/> .
+@prefix ns4: <http://www.w3.org/ns/prov#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix schema: <http://schema.org/> .
+@prefix aac-ont: <http://www.americanartcollaborative.org/ontology/> .
+@prefix reg: <http://metadataregistry.org/uri/profile/RegAp/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix DOLCE-Lite: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix FRBRentitiesRDA: <http://rdvocab.info/uri/schema/FRBRentitiesRDA/> .
+@prefix saam-ont: <http://americanart.si.edu/ontology/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix wot: <http://xmlns.com/wot/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix ElementsGr2: <http://rdvocab.info/ElementsGr2/> .
+@prefix skos: <http://www.w3.org/2008/05/skos#> .
+@prefix crm: <http://www.cidoc-crm.org/rdfs/cidoc-crm#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix abc: <http://metadata.net/harmony/abc#> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix rdfg: <http://www.w3.org/2004/03/trix/rdfg-1/> .
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix km-dev: <http://isi.edu/integration/karma/dev#> .
+
+_:node189re4sn2x1 a km-dev:R2RMLMapping ;
+	km-dev:sourceName "consolidatedreviews.json" ;
+	km-dev:modelPublicationTime "1384974021346"^^xsd:long ;
+	km-dev:hasWorksheetHistory """[
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/award/award_winner/awards_won\"},
+          {\"columnName\": \"award\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Award\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/award/award_winner/awards_won\"},
+          {\"columnName\": \"year\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Award1\",
+          \"FullType\": \"http://dbpedia.org/ontology/date\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/common/topic/official_website\"},
+          {\"columnName\": \"values\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/MusicalArtist\",
+          \"FullType\": \"http://dbpedia.org/ontology/websiteLabel\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"ChangeInternalNodeLinksCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"initialEdges\",
+        \"type\": \"other\",
+        \"value\": []
+      },
+      {
+        \"name\": \"alignmentId\",
+        \"type\": \"other\",
+        \"value\": \"WSP1:WS1AL\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"newEdges\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"edgeId\": \"http://dbpedia.org/ontology/award\",
+          \"edgeSourceId\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"edgeTargetId\": \"http://dbpedia.org/ontology/Award1\"
+        }]
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [{\"columnName\": \"name\"}]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/music/artist/album\"},
+          {\"columnName\": \"name\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Album\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/music/artist/album\"},
+          {\"columnName\": \"/music/album/release_type\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Album1\",
+          \"FullType\": \"http://dbpedia.org/ontology/musicFormat\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/music/artist/album\"},
+          {\"columnName\": \"/music/album/release_date\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Album1\",
+          \"FullType\": \"http://dbpedia.org/ontology/releaseDate\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"ChangeInternalNodeLinksCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"initialEdges\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"direction\": \"outgoing\",
+          \"edgeId\": \"http://dbpedia.org/ontology/award\",
+          \"edgeLabel\": \"dbpedia-owl:award\",
+          \"edgeSource\": \"dbpedia-owl:MusicalArtist1\",
+          \"edgeSourceId\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"edgeTarget\": \"dbpedia-owl:Award1\",
+          \"edgeTargetId\": \"http://dbpedia.org/ontology/Award1\"
+        }]
+      },
+      {
+        \"name\": \"alignmentId\",
+        \"type\": \"other\",
+        \"value\": \"WSP1:WS1AL\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"newEdges\",
+        \"type\": \"other\",
+        \"value\": [
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/award\",
+            \"edgeSourceId\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/Award1\"
+          },
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/album\",
+            \"edgeSourceId\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/Album1\"
+          }
+        ]
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"ns0:/type/object/key\"},
+          {\"columnName\": \"value\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"FullType\": \"http://dbpedia.org/ontology/wikiPageID\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/music/artist/album\"},
+          {\"columnName\": \"/award/award_winning_work/awards_won\"},
+          {\"columnName\": \"year\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Award\",
+          \"FullType\": \"http://dbpedia.org/ontology/date\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/music/artist/album\"},
+          {\"columnName\": \"/award/award_winning_work/awards_won\"},
+          {\"columnName\": \"award\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Award2\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"ChangeInternalNodeLinksCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"initialEdges\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"direction\": \"incoming\",
+          \"edgeId\": \"http://dbpedia.org/ontology/album\",
+          \"edgeLabel\": \"dbpedia-owl:album\",
+          \"edgeSource\": \"dbpedia-owl:MusicalArtist1\",
+          \"edgeSourceId\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"edgeTarget\": \"dbpedia-owl:Album1\",
+          \"edgeTargetId\": \"http://dbpedia.org/ontology/Album1\"
+        }]
+      },
+      {
+        \"name\": \"alignmentId\",
+        \"type\": \"other\",
+        \"value\": \"WSP1:WS1AL\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"newEdges\",
+        \"type\": \"other\",
+        \"value\": [
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/album\",
+            \"edgeSourceId\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/Album1\"
+          },
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/award\",
+            \"edgeSourceId\": \"http://dbpedia.org/ontology/Album1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/Award2\"
+          }
+        ]
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SubmitPythonTransformationCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"newColumnName\",
+        \"type\": \"other\",
+        \"value\": \"artist_mid_uri\"
+      },
+      {
+        \"name\": \"transformationCode\",
+        \"type\": \"other\",
+        \"value\": \"return \\\"http://rdf.freebase.com/ns/\\\" + getValue(\\\"mid\\\")[1:].replace(\\\"/\\\",\\\".\\\")\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [{\"columnName\": \"mid\"}]
+      },
+      {
+        \"name\": \"errorDefaultValue\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Transformation\"]
+  },
+  {
+    \"commandName\": \"SubmitPythonTransformationCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"newColumnName\",
+        \"type\": \"other\",
+        \"value\": \"artist_musicbrainz_id\"
+      },
+      {
+        \"name\": \"transformationCode\",
+        \"type\": \"other\",
+        \"value\": \"return \\\"http://musicbrainz.org/artist/\\\" + getValue(\\\"value\\\")\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/type/object/key\"},
+          {\"columnName\": \"value\"}
+        ]
+      },
+      {
+        \"name\": \"errorDefaultValue\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Transformation\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/type/object/key\"},
+          {\"columnName\": \"artist_musicbrainz_id\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"FullType\": \"http://dbpedia.org/ontology/id\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [{\"columnName\": \"artist_mid_uri\"}]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"FullType\": \"http://dbpedia.org/ontology/id\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [{\"columnName\": \"artist_mid_uri\"}]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"FullType\": \"http://dbpedia.org/ontology/id\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": true
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SubmitPythonTransformationCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"newColumnName\",
+        \"type\": \"other\",
+        \"value\": \"album_mid_uri\"
+      },
+      {
+        \"name\": \"transformationCode\",
+        \"type\": \"other\",
+        \"value\": \"return \\\"http://rdf.freebase.com/ns/\\\" + getValue(\\\"mid\\\")[1:].replace(\\\"/\\\",\\\".\\\")\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/music/artist/album\"},
+          {\"columnName\": \"mid\"}
+        ]
+      },
+      {
+        \"name\": \"errorDefaultValue\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Transformation\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/music/artist/album\"},
+          {\"columnName\": \"album_mid_uri\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Album1\",
+          \"FullType\": \"http://dbpedia.org/ontology/id\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": true
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetMetaPropertyCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\",
+        \"value\": \"isUriOfClass\"
+      },
+      {
+        \"name\": \"metaPropertyValue\",
+        \"type\": \"other\",
+        \"value\": \"http://dbpedia.org/ontology/MusicalArtist1\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [{\"columnName\": \"artist_mid_uri\"}]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetMetaPropertyCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\",
+        \"value\": \"isUriOfClass\"
+      },
+      {
+        \"name\": \"metaPropertyValue\",
+        \"type\": \"other\",
+        \"value\": \"http://dbpedia.org/ontology/Album1\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/music/artist/album\"},
+          {\"columnName\": \"album_mid_uri\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"/type/object/key\"},
+          {\"columnName\": \"artist_musicbrainz_id\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+          \"FullType\": \"http://www.w3.org/2002/07/owl#sameAs\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  }
+]
+""" .
+
+km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 a rr:TriplesMap .
+
+_:node189re4sn2x1 km-dev:hasTriplesMap km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 .
+
+_:node189re4sn2x2 rr:tableName "consolidatedreviews.json" .
+
+km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 rr:logicalTable _:node189re4sn2x2 .
+
+_:node189re4sn2x3 rr:template "{\"[\"/music/artist/album\",\"album_mid_uri\"]\"}" .
+
+km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 rr:subjectMap _:node189re4sn2x3 .
+
+_:node189re4sn2x3 km-dev:alignmentNodeId "http://dbpedia.org/ontology/Album1" ;
+	rr:class dbpedia-owl:Album .
+
+_:node189re4sn2x4 rr:predicate dbpedia-owl:award .
+
+km-dev:RefObjectMap_4bcface5-0660-43a8-b1ba-e968314fc4a7 a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_0ddcd6c9-5ac4-4ddf-bd76-6559e3f3636c .
+
+_:node189re4sn2x4 rr:objectMap km-dev:RefObjectMap_4bcface5-0660-43a8-b1ba-e968314fc4a7 .
+
+km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 rr:predicateObjectMap _:node189re4sn2x4 .
+
+_:node189re4sn2x5 rr:predicate dbpedia-owl:musicFormat .
+
+_:node189re4sn2x6 rr:column "[\"/music/artist/album\",\"/music/album/release_type\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x5 rr:objectMap _:node189re4sn2x6 .
+
+km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 rr:predicateObjectMap _:node189re4sn2x5 .
+
+_:node189re4sn2x7 rr:predicate dbpedia-owl:releaseDate .
+
+_:node189re4sn2x8 rr:column "[\"/music/artist/album\",\"/music/album/release_date\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x7 rr:objectMap _:node189re4sn2x8 .
+
+km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 rr:predicateObjectMap _:node189re4sn2x7 .
+
+_:node189re4sn2x10 rr:predicate rdfs:label .
+
+_:node189re4sn2x11 rr:column "[\"/music/artist/album\",\"name\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x10 rr:objectMap _:node189re4sn2x11 .
+
+km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 rr:predicateObjectMap _:node189re4sn2x10 .
+
+km-dev:TriplesMap_0ddcd6c9-5ac4-4ddf-bd76-6559e3f3636c a rr:TriplesMap .
+
+_:node189re4sn2x1 km-dev:hasTriplesMap km-dev:TriplesMap_0ddcd6c9-5ac4-4ddf-bd76-6559e3f3636c .
+
+_:node189re4sn2x12 rr:tableName "consolidatedreviews.json" .
+
+km-dev:TriplesMap_0ddcd6c9-5ac4-4ddf-bd76-6559e3f3636c rr:logicalTable _:node189re4sn2x12 .
+
+_:node189re4sn2x13 rr:template "http://localhost:8080/source/" .
+
+km-dev:TriplesMap_0ddcd6c9-5ac4-4ddf-bd76-6559e3f3636c rr:subjectMap _:node189re4sn2x13 .
+
+_:node189re4sn2x13 km-dev:alignmentNodeId "http://dbpedia.org/ontology/Award2" ;
+	rr:class dbpedia-owl:Award ;
+	rr:termType rr:BlankNode ;
+	km-dev:coversColumn "[\"/music/artist/album\",\"/award/award_winning_work/awards_won\",\"year\"]" , "[\"/music/artist/album\",\"/award/award_winning_work/awards_won\",\"award\"]" ;
+	km-dev:namePrefix "dbpedia-owl:Award2" .
+
+_:node189re4sn2x14 rr:predicate dbpedia-owl:date .
+
+_:node189re4sn2x15 rr:column "[\"/music/artist/album\",\"/award/award_winning_work/awards_won\",\"year\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x14 rr:objectMap _:node189re4sn2x15 .
+
+km-dev:TriplesMap_0ddcd6c9-5ac4-4ddf-bd76-6559e3f3636c rr:predicateObjectMap _:node189re4sn2x14 .
+
+_:node189re4sn2x16 rr:predicate rdfs:label .
+
+_:node189re4sn2x17 rr:column "[\"/music/artist/album\",\"/award/award_winning_work/awards_won\",\"award\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x16 rr:objectMap _:node189re4sn2x17 .
+
+km-dev:TriplesMap_0ddcd6c9-5ac4-4ddf-bd76-6559e3f3636c rr:predicateObjectMap _:node189re4sn2x16 .
+
+km-dev:TriplesMap_5a3d567c-907b-441a-8c7b-1b50dbd231b7 a rr:TriplesMap .
+
+_:node189re4sn2x1 km-dev:hasTriplesMap km-dev:TriplesMap_5a3d567c-907b-441a-8c7b-1b50dbd231b7 .
+
+_:node189re4sn2x18 rr:tableName "consolidatedreviews.json" .
+
+km-dev:TriplesMap_5a3d567c-907b-441a-8c7b-1b50dbd231b7 rr:logicalTable _:node189re4sn2x18 .
+
+_:node189re4sn2x19 rr:template "http://localhost:8080/source/" .
+
+km-dev:TriplesMap_5a3d567c-907b-441a-8c7b-1b50dbd231b7 rr:subjectMap _:node189re4sn2x19 .
+
+_:node189re4sn2x19 km-dev:alignmentNodeId "http://dbpedia.org/ontology/Award1" ;
+	rr:class dbpedia-owl:Award ;
+	rr:termType rr:BlankNode ;
+	km-dev:coversColumn "[\"/award/award_winner/awards_won\",\"award\"]" , "[\"/award/award_winner/awards_won\",\"year\"]" ;
+	km-dev:namePrefix "dbpedia-owl:Award1" .
+
+_:node189re4sn2x20 rr:predicate dbpedia-owl:date .
+
+_:node189re4sn2x21 rr:column "[\"/award/award_winner/awards_won\",\"year\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x20 rr:objectMap _:node189re4sn2x21 .
+
+km-dev:TriplesMap_5a3d567c-907b-441a-8c7b-1b50dbd231b7 rr:predicateObjectMap _:node189re4sn2x20 .
+
+_:node189re4sn2x22 rr:predicate rdfs:label .
+
+_:node189re4sn2x23 rr:column "[\"/award/award_winner/awards_won\",\"award\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x22 rr:objectMap _:node189re4sn2x23 .
+
+km-dev:TriplesMap_5a3d567c-907b-441a-8c7b-1b50dbd231b7 rr:predicateObjectMap _:node189re4sn2x22 .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb a rr:TriplesMap .
+
+_:node189re4sn2x1 km-dev:hasTriplesMap km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb .
+
+_:node189re4sn2x24 rr:tableName "consolidatedreviews.json" .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb rr:logicalTable _:node189re4sn2x24 .
+
+_:node189re4sn2x25 rr:template "{\"artist_mid_uri\"}" .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb rr:subjectMap _:node189re4sn2x25 .
+
+_:node189re4sn2x25 km-dev:alignmentNodeId "http://dbpedia.org/ontology/MusicalArtist1" ;
+	rr:class dbpedia-owl:MusicalArtist ;
+	a km-dev:steinerTreeRootNode .
+
+_:node189re4sn2x26 rr:predicate dbpedia-owl:album .
+
+km-dev:RefObjectMap_411e556c-7ebd-4064-a3b4-8d464522555f a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_1abf83fb-e59d-462f-b600-6ed7b42f8c00 .
+
+_:node189re4sn2x26 rr:objectMap km-dev:RefObjectMap_411e556c-7ebd-4064-a3b4-8d464522555f .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb rr:predicateObjectMap _:node189re4sn2x26 .
+
+_:node189re4sn2x27 rr:predicate dbpedia-owl:award .
+
+km-dev:RefObjectMap_27fb5fc4-c567-4c68-816b-7ce7d179db29 a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_5a3d567c-907b-441a-8c7b-1b50dbd231b7 .
+
+_:node189re4sn2x27 rr:objectMap km-dev:RefObjectMap_27fb5fc4-c567-4c68-816b-7ce7d179db29 .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb rr:predicateObjectMap _:node189re4sn2x27 .
+
+_:node189re4sn2x28 rr:predicate dbpedia-owl:websiteLabel .
+
+_:node189re4sn2x29 rr:column "[\"/common/topic/official_website\",\"values\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x28 rr:objectMap _:node189re4sn2x29 .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb rr:predicateObjectMap _:node189re4sn2x28 .
+
+_:node189re4sn2x30 rr:predicate dbpedia-owl:wikiPageID .
+
+_:node189re4sn2x31 rr:column "[\"ns0:/type/object/key\",\"value\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x30 rr:objectMap _:node189re4sn2x31 .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb rr:predicateObjectMap _:node189re4sn2x30 .
+
+_:node189re4sn2x33 rr:predicate rdfs:label .
+
+_:node189re4sn2x34 rr:column "name" ;
+	rr:datatype "" .
+
+_:node189re4sn2x33 rr:objectMap _:node189re4sn2x34 .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb rr:predicateObjectMap _:node189re4sn2x33 .
+
+_:node189re4sn2x35 rr:predicate owl:sameAs .
+
+_:node189re4sn2x36 rr:column "[\"/type/object/key\",\"artist_musicbrainz_id\"]" ;
+	rr:datatype "" .
+
+_:node189re4sn2x35 rr:objectMap _:node189re4sn2x36 .
+
+km-dev:TriplesMap_a16d8022-bed4-4b47-87e0-06a4bfc593fb rr:predicateObjectMap _:node189re4sn2x35 .

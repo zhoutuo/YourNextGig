@@ -1,0 +1,1111 @@
+@prefix status: <http://metadataregistry.org/uri/RegStatus/> .
+@prefix ns4: <http://www.w3.org/ns/prov#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix schema: <http://schema.org/> .
+@prefix aac-ont: <http://www.americanartcollaborative.org/ontology/> .
+@prefix reg: <http://metadataregistry.org/uri/profile/RegAp/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix DOLCE-Lite: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix wgs84_pos: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix FRBRentitiesRDA: <http://rdvocab.info/uri/schema/FRBRentitiesRDA/> .
+@prefix saam-ont: <http://americanart.si.edu/ontology/> .
+@prefix edm: <http://www.europeana.eu/schemas/edm/> .
+@prefix wot: <http://xmlns.com/wot/0.1/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix grddl: <http://www.w3.org/2003/g/data-view#> .
+@prefix ElementsGr2: <http://rdvocab.info/ElementsGr2/> .
+@prefix skos: <http://www.w3.org/2008/05/skos#> .
+@prefix crm: <http://www.cidoc-crm.org/rdfs/cidoc-crm#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix frbr_core: <http://purl.org/vocab/frbr/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ore: <http://www.openarchives.org/ore/terms/> .
+@prefix abc: <http://metadata.net/harmony/abc#> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix rdfg: <http://www.w3.org/2004/03/trix/rdfg-1/> .
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix km-dev: <http://isi.edu/integration/karma/dev#> .
+
+_:node189vco9b2x1 a km-dev:R2RMLMapping ;
+	km-dev:sourceName "songkick_subset.json" ;
+	km-dev:modelPublicationTime "1385106777442"^^xsd:long ;
+	km-dev:hasWorksheetHistory """[
+  {
+    \"commandName\": \"SetMetaPropertyCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\",
+        \"value\": \"isUriOfClass\"
+      },
+      {
+        \"name\": \"metaPropertyValue\",
+        \"type\": \"other\",
+        \"value\": \"http://dbpedia.org/ontology/Venue\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"venue\"},
+          {\"columnName\": \"uri\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"start\"},
+          {\"columnName\": \"date\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Event\",
+          \"FullType\": \"http://dbpedia.org/ontology/date\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetMetaPropertyCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\",
+        \"value\": \"isUriOfClass\"
+      },
+      {
+        \"name\": \"metaPropertyValue\",
+        \"type\": \"other\",
+        \"value\": \"http://dbpedia.org/ontology/Event1\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [{\"columnName\": \"uri\"}]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"ChangeInternalNodeLinksCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"initialEdges\",
+        \"type\": \"other\",
+        \"value\": []
+      },
+      {
+        \"name\": \"alignmentId\",
+        \"type\": \"other\",
+        \"value\": \"WSP1:WS1AL\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"newEdges\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"edgeId\": \"http://dbpedia.org/ontology/building\",
+          \"edgeSourceId\": \"http://dbpedia.org/ontology/Event1\",
+          \"edgeTargetId\": \"http://dbpedia.org/ontology/Venue1\"
+        }]
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"venue\"},
+          {\"columnName\": \"displayName\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Venue1\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"venue\"},
+          {\"columnName\": \"lat\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://www.w3.org/2003/01/geo/wgs84_pos#Point\",
+          \"FullType\": \"http://www.w3.org/2003/01/geo/wgs84_pos#lat\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"venue\"},
+          {\"columnName\": \"lng\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://www.w3.org/2003/01/geo/wgs84_pos#Point1\",
+          \"FullType\": \"http://www.w3.org/2003/01/geo/wgs84_pos#long\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"ChangeInternalNodeLinksCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"initialEdges\",
+        \"type\": \"other\",
+        \"value\": []
+      },
+      {
+        \"name\": \"alignmentId\",
+        \"type\": \"other\",
+        \"value\": \"WSP1:WS1AL\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"newEdges\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"edgeId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#location\",
+          \"edgeSourceId\": \"http://dbpedia.org/ontology/Venue1\",
+          \"edgeTargetId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#Point1\"
+        }]
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"venue\"},
+          {\"columnName\": \"metroArea\"},
+          {\"columnName\": \"country\"},
+          {\"columnName\": \"displayName\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Country\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"venue\"},
+          {\"columnName\": \"metroArea\"},
+          {\"columnName\": \"state\"},
+          {\"columnName\": \"displayName\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/State\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"venue\"},
+          {\"columnName\": \"metroArea\"},
+          {\"columnName\": \"displayName\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/City\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"ChangeInternalNodeLinksCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"initialEdges\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"direction\": \"incoming\",
+          \"edgeId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#location\",
+          \"edgeLabel\": \"wgs84_pos:location\",
+          \"edgeSource\": \"dbpedia-owl:Venue1\",
+          \"edgeSourceId\": \"http://dbpedia.org/ontology/Venue1\",
+          \"edgeTarget\": \"wgs84_pos:Point1\",
+          \"edgeTargetId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#Point1\"
+        }]
+      },
+      {
+        \"name\": \"alignmentId\",
+        \"type\": \"other\",
+        \"value\": \"WSP1:WS1AL\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"newEdges\",
+        \"type\": \"other\",
+        \"value\": [
+          {
+            \"edgeId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#location\",
+            \"edgeSourceId\": \"http://dbpedia.org/ontology/Venue1\",
+            \"edgeTargetId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#Point1\"
+          },
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/country\",
+            \"edgeSourceId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#Point1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/Country1\"
+          },
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/city\",
+            \"edgeSourceId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#Point1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/City1\"
+          },
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/state\",
+            \"edgeSourceId\": \"http://www.w3.org/2003/01/geo/wgs84_pos#Point1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/State1\"
+          }
+        ]
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [{\"columnName\": \"displayName\"}]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Event1\",
+          \"FullType\": \"http://www.w3.org/2000/01/rdf-schema#label\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SubmitPythonTransformationCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"newColumnName\",
+        \"type\": \"other\",
+        \"value\": \"artist_mbid_uri\"
+      },
+      {
+        \"name\": \"transformationCode\",
+        \"type\": \"other\",
+        \"value\": \"return \\\"http://musicbrainz.org/artist/\\\" + getValue(\\\"mbid\\\")\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"performance\"},
+          {\"columnName\": \"artist\"},
+          {\"columnName\": \"identifier\"},
+          {\"columnName\": \"mbid\"}
+        ]
+      },
+      {
+        \"name\": \"errorDefaultValue\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Transformation\"]
+  },
+  {
+    \"commandName\": \"SetMetaPropertyCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\",
+        \"value\": \"isUriOfClass\"
+      },
+      {
+        \"name\": \"metaPropertyValue\",
+        \"type\": \"other\",
+        \"value\": \"http://dbpedia.org/ontology/MusicalArtist\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"performance\"},
+          {\"columnName\": \"artist\"},
+          {\"columnName\": \"identifier\"},
+          {\"columnName\": \"artist_mbid_uri\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"ChangeInternalNodeLinksCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"initialEdges\",
+        \"type\": \"other\",
+        \"value\": []
+      },
+      {
+        \"name\": \"alignmentId\",
+        \"type\": \"other\",
+        \"value\": \"WSP1:WS1AL\"
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"newEdges\",
+        \"type\": \"other\",
+        \"value\": [
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/performer\",
+            \"edgeSourceId\": \"http://dbpedia.org/ontology/Event1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/MusicalArtist1\"
+          },
+          {
+            \"edgeId\": \"http://dbpedia.org/ontology/musicalArtist\",
+            \"edgeSourceId\": \"http://dbpedia.org/ontology/MusicalArtist1\",
+            \"edgeTargetId\": \"http://dbpedia.org/ontology/Event1\"
+          }
+        ]
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [
+          {\"columnName\": \"venue\"},
+          {\"columnName\": \"id\"}
+        ]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Venue1\",
+          \"FullType\": \"http://dbpedia.org/ontology/id\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  },
+  {
+    \"commandName\": \"SetSemanticTypeCommand\",
+    \"inputParameters\": [
+      {
+        \"name\": \"metaPropertyName\",
+        \"type\": \"other\"
+      },
+      {
+        \"name\": \"hNodeId\",
+        \"type\": \"hNodeId\",
+        \"value\": [{\"columnName\": \"id\"}]
+      },
+      {
+        \"name\": \"SemanticTypesArray\",
+        \"type\": \"other\",
+        \"value\": [{
+          \"Domain\": \"http://dbpedia.org/ontology/Event1\",
+          \"FullType\": \"http://dbpedia.org/ontology/id\",
+          \"isPrimary\": true
+        }]
+      },
+      {
+        \"name\": \"worksheetId\",
+        \"type\": \"worksheetId\",
+        \"value\": \"W\"
+      },
+      {
+        \"name\": \"isKey\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"trainAndShowUpdates\",
+        \"type\": \"other\",
+        \"value\": false
+      },
+      {
+        \"name\": \"rdfLiteralType\",
+        \"type\": \"other\",
+        \"value\": \"\"
+      }
+    ],
+    \"tags\": [\"Modeling\"]
+  }
+]
+""" .
+
+km-dev:TriplesMap_80ea038b-ae24-4e34-be51-4348a61211b1 a rr:TriplesMap .
+
+_:node189vco9b2x1 km-dev:hasTriplesMap km-dev:TriplesMap_80ea038b-ae24-4e34-be51-4348a61211b1 .
+
+_:node189vco9b2x2 rr:tableName "songkick_subset.json" .
+
+km-dev:TriplesMap_80ea038b-ae24-4e34-be51-4348a61211b1 rr:logicalTable _:node189vco9b2x2 .
+
+_:node189vco9b2x3 rr:template "http://localhost:8080/source/" .
+
+km-dev:TriplesMap_80ea038b-ae24-4e34-be51-4348a61211b1 rr:subjectMap _:node189vco9b2x3 .
+
+_:node189vco9b2x3 km-dev:alignmentNodeId "http://dbpedia.org/ontology/City1" ;
+	rr:class dbpedia-owl:City ;
+	rr:termType rr:BlankNode ;
+	km-dev:coversColumn "[\"venue\",\"lng\"]" , "[\"venue\",\"metroArea\",\"state\",\"displayName\"]" , "[\"venue\",\"metroArea\",\"displayName\"]" , "[\"venue\",\"lat\"]" ;
+	km-dev:namePrefix "dbpedia-owl:City1" .
+
+_:node189vco9b2x4 rr:predicate rdfs:label .
+
+_:node189vco9b2x5 rr:column "[\"venue\",\"metroArea\",\"displayName\"]" ;
+	rr:datatype "" .
+
+_:node189vco9b2x4 rr:objectMap _:node189vco9b2x5 .
+
+km-dev:TriplesMap_80ea038b-ae24-4e34-be51-4348a61211b1 rr:predicateObjectMap _:node189vco9b2x4 .
+
+km-dev:TriplesMap_b07eceee-17db-4e6e-9d64-c655818a341e a rr:TriplesMap .
+
+_:node189vco9b2x1 km-dev:hasTriplesMap km-dev:TriplesMap_b07eceee-17db-4e6e-9d64-c655818a341e .
+
+_:node189vco9b2x6 rr:tableName "songkick_subset.json" .
+
+km-dev:TriplesMap_b07eceee-17db-4e6e-9d64-c655818a341e rr:logicalTable _:node189vco9b2x6 .
+
+_:node189vco9b2x7 rr:template "http://localhost:8080/source/" .
+
+km-dev:TriplesMap_b07eceee-17db-4e6e-9d64-c655818a341e rr:subjectMap _:node189vco9b2x7 .
+
+_:node189vco9b2x7 km-dev:alignmentNodeId "http://dbpedia.org/ontology/Country1" ;
+	rr:class dbpedia-owl:Country ;
+	rr:termType rr:BlankNode ;
+	km-dev:coversColumn "[\"venue\",\"lng\"]" , "[\"venue\",\"metroArea\",\"state\",\"displayName\"]" , "[\"venue\",\"metroArea\",\"country\",\"displayName\"]" , "[\"venue\",\"lat\"]" ;
+	km-dev:namePrefix "dbpedia-owl:Country1" .
+
+_:node189vco9b2x8 rr:predicate rdfs:label .
+
+_:node189vco9b2x9 rr:column "[\"venue\",\"metroArea\",\"country\",\"displayName\"]" ;
+	rr:datatype "" .
+
+_:node189vco9b2x8 rr:objectMap _:node189vco9b2x9 .
+
+km-dev:TriplesMap_b07eceee-17db-4e6e-9d64-c655818a341e rr:predicateObjectMap _:node189vco9b2x8 .
+
+km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 a rr:TriplesMap .
+
+_:node189vco9b2x1 km-dev:hasTriplesMap km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 .
+
+_:node189vco9b2x10 rr:tableName "songkick_subset.json" .
+
+km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 rr:logicalTable _:node189vco9b2x10 .
+
+_:node189vco9b2x11 rr:template "{\"uri\"}" .
+
+km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 rr:subjectMap _:node189vco9b2x11 .
+
+_:node189vco9b2x11 km-dev:alignmentNodeId "http://dbpedia.org/ontology/Event1" ;
+	rr:class dbpedia-owl:Event ;
+	a km-dev:steinerTreeRootNode .
+
+_:node189vco9b2x12 rr:predicate dbpedia-owl:building .
+
+km-dev:RefObjectMap_4a7f3c7c-8d9b-4dca-a604-9c57154d1d73 a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_f092e7c6-4653-4a65-baa6-8d715b4fee48 .
+
+_:node189vco9b2x12 rr:objectMap km-dev:RefObjectMap_4a7f3c7c-8d9b-4dca-a604-9c57154d1d73 .
+
+km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 rr:predicateObjectMap _:node189vco9b2x12 .
+
+_:node189vco9b2x13 rr:predicate dbpedia-owl:date .
+
+_:node189vco9b2x14 rr:column "[\"start\",\"date\"]" ;
+	rr:datatype "" .
+
+_:node189vco9b2x13 rr:objectMap _:node189vco9b2x14 .
+
+km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 rr:predicateObjectMap _:node189vco9b2x13 .
+
+_:node189vco9b2x15 rr:predicate dbpedia-owl:id .
+
+_:node189vco9b2x16 rr:column "id" ;
+	rr:datatype "" .
+
+_:node189vco9b2x15 rr:objectMap _:node189vco9b2x16 .
+
+km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 rr:predicateObjectMap _:node189vco9b2x15 .
+
+_:node189vco9b2x18 rr:predicate rdfs:label .
+
+_:node189vco9b2x19 rr:column "displayName" ;
+	rr:datatype "" .
+
+_:node189vco9b2x18 rr:objectMap _:node189vco9b2x19 .
+
+km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 rr:predicateObjectMap _:node189vco9b2x18 .
+
+_:node189vco9b2x20 rr:predicate dbpedia-owl:performer .
+
+km-dev:RefObjectMap_bcfeb6b8-d094-4b61-8038-f9d39ae7855e a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_193d4efc-c64f-4e7f-94a6-f6c5c63d1666 .
+
+_:node189vco9b2x20 rr:objectMap km-dev:RefObjectMap_bcfeb6b8-d094-4b61-8038-f9d39ae7855e .
+
+km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 rr:predicateObjectMap _:node189vco9b2x20 .
+
+km-dev:TriplesMap_f092e7c6-4653-4a65-baa6-8d715b4fee48 a rr:TriplesMap .
+
+_:node189vco9b2x1 km-dev:hasTriplesMap km-dev:TriplesMap_f092e7c6-4653-4a65-baa6-8d715b4fee48 .
+
+_:node189vco9b2x21 rr:tableName "songkick_subset.json" .
+
+km-dev:TriplesMap_f092e7c6-4653-4a65-baa6-8d715b4fee48 rr:logicalTable _:node189vco9b2x21 .
+
+_:node189vco9b2x22 rr:template "{\"[\"venue\",\"uri\"]\"}" .
+
+km-dev:TriplesMap_f092e7c6-4653-4a65-baa6-8d715b4fee48 rr:subjectMap _:node189vco9b2x22 .
+
+_:node189vco9b2x22 km-dev:alignmentNodeId "http://dbpedia.org/ontology/Venue1" ;
+	rr:class dbpedia-owl:Venue .
+
+_:node189vco9b2x23 rr:predicate dbpedia-owl:id .
+
+_:node189vco9b2x24 rr:column "[\"venue\",\"id\"]" ;
+	rr:datatype "" .
+
+_:node189vco9b2x23 rr:objectMap _:node189vco9b2x24 .
+
+km-dev:TriplesMap_f092e7c6-4653-4a65-baa6-8d715b4fee48 rr:predicateObjectMap _:node189vco9b2x23 .
+
+_:node189vco9b2x26 rr:predicate rdfs:label .
+
+_:node189vco9b2x27 rr:column "[\"venue\",\"displayName\"]" ;
+	rr:datatype "" .
+
+_:node189vco9b2x26 rr:objectMap _:node189vco9b2x27 .
+
+km-dev:TriplesMap_f092e7c6-4653-4a65-baa6-8d715b4fee48 rr:predicateObjectMap _:node189vco9b2x26 .
+
+_:node189vco9b2x28 rr:predicate wgs84_pos:location .
+
+km-dev:RefObjectMap_8790c119-44de-4364-9139-1eaf2f21549b a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 .
+
+_:node189vco9b2x28 rr:objectMap km-dev:RefObjectMap_8790c119-44de-4364-9139-1eaf2f21549b .
+
+km-dev:TriplesMap_f092e7c6-4653-4a65-baa6-8d715b4fee48 rr:predicateObjectMap _:node189vco9b2x28 .
+
+km-dev:TriplesMap_193d4efc-c64f-4e7f-94a6-f6c5c63d1666 a rr:TriplesMap .
+
+_:node189vco9b2x1 km-dev:hasTriplesMap km-dev:TriplesMap_193d4efc-c64f-4e7f-94a6-f6c5c63d1666 .
+
+_:node189vco9b2x29 rr:tableName "songkick_subset.json" .
+
+km-dev:TriplesMap_193d4efc-c64f-4e7f-94a6-f6c5c63d1666 rr:logicalTable _:node189vco9b2x29 .
+
+_:node189vco9b2x30 rr:template "{\"[\"performance\",\"artist\",\"identifier\",\"artist_mbid_uri\"]\"}" .
+
+km-dev:TriplesMap_193d4efc-c64f-4e7f-94a6-f6c5c63d1666 rr:subjectMap _:node189vco9b2x30 .
+
+_:node189vco9b2x30 km-dev:alignmentNodeId "http://dbpedia.org/ontology/MusicalArtist1" ;
+	rr:class dbpedia-owl:MusicalArtist .
+
+_:node189vco9b2x31 rr:predicate dbpedia-owl:musicalArtist .
+
+km-dev:RefObjectMap_55e2f5c6-e5b2-4d66-aed8-8467ea8f57ae a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_18c5f328-1ee0-4629-a1aa-8e9fbe497a67 .
+
+_:node189vco9b2x31 rr:objectMap km-dev:RefObjectMap_55e2f5c6-e5b2-4d66-aed8-8467ea8f57ae .
+
+km-dev:TriplesMap_193d4efc-c64f-4e7f-94a6-f6c5c63d1666 rr:predicateObjectMap _:node189vco9b2x31 .
+
+km-dev:TriplesMap_4a6b90d7-3a4e-445c-ac1b-4f2149d5e73e a rr:TriplesMap .
+
+_:node189vco9b2x1 km-dev:hasTriplesMap km-dev:TriplesMap_4a6b90d7-3a4e-445c-ac1b-4f2149d5e73e .
+
+_:node189vco9b2x33 rr:tableName "songkick_subset.json" .
+
+km-dev:TriplesMap_4a6b90d7-3a4e-445c-ac1b-4f2149d5e73e rr:logicalTable _:node189vco9b2x33 .
+
+_:node189vco9b2x34 rr:template "http://localhost:8080/source/" .
+
+km-dev:TriplesMap_4a6b90d7-3a4e-445c-ac1b-4f2149d5e73e rr:subjectMap _:node189vco9b2x34 .
+
+_:node189vco9b2x34 km-dev:alignmentNodeId "http://dbpedia.org/ontology/State1" ;
+	rr:class dbpedia-owl:State ;
+	rr:termType rr:BlankNode ;
+	km-dev:coversColumn "[\"venue\",\"metroArea\",\"state\",\"displayName\"]" ;
+	km-dev:namePrefix "dbpedia-owl:State1" .
+
+_:node189vco9b2x35 rr:predicate rdfs:label .
+
+_:node189vco9b2x36 rr:column "[\"venue\",\"metroArea\",\"state\",\"displayName\"]" ;
+	rr:datatype "" .
+
+_:node189vco9b2x35 rr:objectMap _:node189vco9b2x36 .
+
+km-dev:TriplesMap_4a6b90d7-3a4e-445c-ac1b-4f2149d5e73e rr:predicateObjectMap _:node189vco9b2x35 .
+
+km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 a rr:TriplesMap .
+
+_:node189vco9b2x1 km-dev:hasTriplesMap km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 .
+
+_:node189vco9b2x37 rr:tableName "songkick_subset.json" .
+
+km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 rr:logicalTable _:node189vco9b2x37 .
+
+_:node189vco9b2x38 rr:template "http://localhost:8080/source/" .
+
+km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 rr:subjectMap _:node189vco9b2x38 .
+
+_:node189vco9b2x38 km-dev:alignmentNodeId "http://www.w3.org/2003/01/geo/wgs84_pos#Point1" ;
+	rr:class wgs84_pos:Point ;
+	rr:termType rr:BlankNode ;
+	km-dev:coversColumn "[\"venue\",\"lng\"]" , "[\"venue\",\"metroArea\",\"state\",\"displayName\"]" , "[\"venue\",\"lat\"]" ;
+	km-dev:namePrefix "wgs84_pos:Point1" .
+
+_:node189vco9b2x39 rr:predicate dbpedia-owl:city .
+
+km-dev:RefObjectMap_fc375b09-2d10-4383-88ed-3d5465b6b566 a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_80ea038b-ae24-4e34-be51-4348a61211b1 .
+
+_:node189vco9b2x39 rr:objectMap km-dev:RefObjectMap_fc375b09-2d10-4383-88ed-3d5465b6b566 .
+
+km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 rr:predicateObjectMap _:node189vco9b2x39 .
+
+_:node189vco9b2x40 rr:predicate dbpedia-owl:country .
+
+km-dev:RefObjectMap_af221ae9-3d27-42fe-bf92-79cd3268a1d6 a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_b07eceee-17db-4e6e-9d64-c655818a341e .
+
+_:node189vco9b2x40 rr:objectMap km-dev:RefObjectMap_af221ae9-3d27-42fe-bf92-79cd3268a1d6 .
+
+km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 rr:predicateObjectMap _:node189vco9b2x40 .
+
+_:node189vco9b2x41 rr:predicate dbpedia-owl:state .
+
+km-dev:RefObjectMap_74b5ef3f-21c4-4c5f-991f-77f697f06412 a rr:RefObjectMap ;
+	rr:parentTriplesMap km-dev:TriplesMap_4a6b90d7-3a4e-445c-ac1b-4f2149d5e73e .
+
+_:node189vco9b2x41 rr:objectMap km-dev:RefObjectMap_74b5ef3f-21c4-4c5f-991f-77f697f06412 .
+
+km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 rr:predicateObjectMap _:node189vco9b2x41 .
+
+_:node189vco9b2x42 rr:predicate wgs84_pos:lat .
+
+_:node189vco9b2x43 rr:column "[\"venue\",\"lat\"]" ;
+	rr:datatype "" .
+
+_:node189vco9b2x42 rr:objectMap _:node189vco9b2x43 .
+
+km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 rr:predicateObjectMap _:node189vco9b2x42 .
+
+_:node189vco9b2x44 rr:predicate wgs84_pos:long .
+
+_:node189vco9b2x45 rr:column "[\"venue\",\"lng\"]" ;
+	rr:datatype "" .
+
+_:node189vco9b2x44 rr:objectMap _:node189vco9b2x45 .
+
+km-dev:TriplesMap_2d063318-dccb-4015-b113-9d08834d26c0 rr:predicateObjectMap _:node189vco9b2x44 .

@@ -22,30 +22,48 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class SparqlQuery<E> {
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SparqlQuery.class);
-    
+    private int queryCount = 0;
+    private int skippedQueryCount = 0;
     private final Map<String, String> queryStrings = new HashMap<String, String>();
-    
+    private final Map<String, E> cachedResults = new HashMap<String, E>();
+    private final Map<String, List<E>> cachedMultiResults = new HashMap<String, List<E>>();
     public E search(String id) {
         String queryStringFileName = getQueryStringFileName();
         return search(id, queryStringFileName);
     }
     
     protected E search(String id, String queryStringFileName) {
+        if(cachedResults.containsKey(id))
+        {
+            skippedQueryCount++;
+            return cachedResults.get(id);
+        }
         SesameTool sesame = SesameTool.getInstance();
         String searchString = loadSearchString(queryStringFileName);
         String populatedString = searchString.replace("{0}", id);
         LOG.trace(populatedString);
         JSONArray result = sesame.queryForData(populatedString);
-        return translateQueryResult(result);
+        E r = translateQueryResult(result);
+        cachedResults.put(id, r);
+        queryCount++;
+        return r;
     }
 
     protected List<E> searchForMultipleResults(String id, String queryStringFileName) {
+        if(cachedMultiResults.containsKey(id))
+        {
+            skippedQueryCount++;
+            return cachedMultiResults.get(id);
+        }
         SesameTool sesame = SesameTool.getInstance();
         String searchString = loadSearchString(queryStringFileName);
         String populatedString = searchString.replace("{0}", id);
         LOG.trace(populatedString);
         JSONArray result = sesame.queryForData(populatedString);
-        return translateQueryResults(result);
+        List<E> results = translateQueryResults(result);
+        cachedMultiResults.put(id, results);
+        queryCount++;
+        return results;
     }
     
     public String loadSearchString(String fileName)

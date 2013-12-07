@@ -14,14 +14,14 @@ import javax.ws.rs.core.Response;
  *
  * @author jason
  */
-public interface ReviewRESTQuery {
+public interface BillboardRESTQuery {
       @GET
     @Produces("application/json")
     public Response search(@QueryParam("id") String id);
     
     @GET
-    @Path("/album")
+    @Path("/artist")
     @Produces("application/json")
-    public Response searchByAlbum(@QueryParam("albumId") String albumId);
+    public Response searchByArtist(@QueryParam("artistId") String artistId);
     
 }

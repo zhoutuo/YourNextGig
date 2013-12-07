@@ -51,6 +51,14 @@
                 }
             }
         },
+         "billboard" : {
+            "description": "A billboard ranking",
+            "type": "object",
+            "properties": {
+                "year": {"type": "string" }, 
+                "ranking": {"type": "string" }
+            }
+        },
         "review" : {
             "description": "A review",
             "type": "object",
@@ -95,6 +103,10 @@
                 "awards": {
                     "type": "array",
                     "items": { "$ref": "#/definitions/award" }
+                },
+                "rankings" : {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/billboard" }
                 }
             }
         }

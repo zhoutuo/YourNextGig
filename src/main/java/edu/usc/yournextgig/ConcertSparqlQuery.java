@@ -43,43 +43,26 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
         return concert;
         
     }
-    
-    @Override
-    protected Concert translateQueryResult(JSONArray array) {
-              
-        if(array != null && array.length() > 0)
-        {
-            try {
-                JSONObject jsonConcert = array.getJSONObject(0);
-                Concert concert = translateQueryResult(jsonConcert);
-                return concert;
-            } catch (JSONException ex) {
-                LOG.error("Unable to translate query result to concert: " + ex.getMessage());
-            } 
-        }
-        return new Concert();
-    }
-
+  
 
     @Override
     protected String getQueryStringFileName() {
         return "concertquery.rdf";
     }
-
-    private String searchByEventString = null;
     
     public List<Concert> searchByLocation(Double lat, Double lon, Date start, Date end) {
         
         SesameTool sesame = SesameTool.getInstance();
-        //TODO add query
-        searchByEventString = loadSearchString("eventbylocationquery.rdf");
-     
-        String populatedString = searchByEventString;
-        LOG.trace(populatedString);
-        JSONArray result = sesame.queryForData(populatedString);
-        LOG.trace(result.toString());
-        return translateQueryResults(result);
+        String searchString = loadSearchString("eventbylocationquery.rdf");
+        JSONArray result = sesame.queryForData(searchString);
         
+        List<Concert> concerts = translateQueryResults(result);
+        for(Concert concert : concerts)
+        {
+           searchForArtists(concert);
+          searchForVenue(concert);
+        }
+        return concerts;
     }
 
     @Override
@@ -108,6 +91,10 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
     }
 
     private void searchForArtists(Concert concert) {
+        if(!concert.getArtists().isEmpty())
+        {
+            return;
+        }
         concert.getArtists().addAll(ArtistSparqlQuery.getInstance().searchByEvent(concert.getId()));
     }
 

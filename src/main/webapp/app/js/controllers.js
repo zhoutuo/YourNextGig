@@ -81,66 +81,113 @@ controllers.controller('concertsCtrl', ['$scope', '$http', '$location',
 		});
 	}
 ]);
-controllers.controller('artistCtrl', ['$scope', '$http', '$location',
-	function($scope, $http, $location) {
-		$http.get('/YourNextGig/api/stubartist', {
-			params: {
-				id: $location.search().id
-			}
-		}).success(function(artist, status) {
-			var info = artist.info;
-			var curid = info.split('=')[1];
-
-			$http.jsonp("http://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK", {
+controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
+		function($scope, $http, $location, $q) {
+			$http.get('/YourNextGig/api/stubartist', {
 				params: {
-					action: "query",
-					pageids: curid,
-					format: "json"
+					id: $location.search().id
 				}
-			}).success(function(data) {
-				info = "http://en.wikipedia.org/wiki/" + data.query.pages[curid].title.replace(' ', '_');
-				var timelineJson = {
-					"timeline": {
-						"headline": artist.name,
-						"text": " ",
-						"type": "default",
-						"asset": {
-							"media": info
-						},
-						"date": []
+			}).success(function(artist, status) {
+
+				function getinfo(artist) {
+					var deferred = $q.defer();
+					var albums = artist.albums;
+					var signal = 2 + albums.length;
+
+					var info = artist.info;
+					var curid = info.split('=')[1];
+					var profile_link = null;
+
+
+					function then() {
+						--signal;
+						if (signal == 0) {
+							deferred.resolve(artist);
+						}
 					}
-				};
 
-				var albums = artist.albums;
-				var awards = artist.awards;
+					$http.jsonp("http://en.wikipedia.org/w/api.php?callback=JSON_CALLBACK", {
+						params: {
+							action: "query",
+							pageids: curid,
+							format: "json"
+						}
+					}).success(function(data) {
+						artist.info = "http://en.wikipedia.org/wiki/" + data.query.pages[curid].title.replace(' ', '_');
+					}).then(then);
 
-				for (var i = albums.length - 1; i >= 0; i--) {
-					var album = albums[i];
-					timelineJson.timeline.date.push({
-						"startDate": moment(album.releaseDate).format("MM/D/YYYY"),
-						"headline": "<a href='#/reviews?id=" + album.id + "'>" + album.name + "</a>"
-					});
+					$http.jsonp("http://ws.audioscrobbler.com/2.0/?callback=JSON_CALLBACK", {
+						params: {
+							api_key: "ff0d1870597c44a71ccb5ea4afbc0a4d",
+							method: "artist.getinfo",
+							artist: artist.name,
+							format: 'json'
+						}
+					}).success(function(lastfm, status) {
+						artist.profile_link = lastfm.artist.image[3]['#text'];
+					}).then(then);
+
+					for (var i = albums.length - 1; i >= 0; i--) {
+						var album = albums[i];
+						$http.jsonp("http://ws.audioscrobbler.com/2.0/?callback=JSON_CALLBACK", {
+							params: {
+								api_key: "ff0d1870597c44a71ccb5ea4afbc0a4d",
+								method: "album.getinfo",
+								artist: artist.name,
+								album: album.name,
+								format: 'json'
+							}
+						}).success(function(lastfm, status) {
+							album.cover_link = lastfm.album.image[3]['#text'];
+						}).then(then);
+
+					};
+
+					return deferred.promise;
 				}
 
-				for (var i = awards.length - 1; i >= 0; i--) {
-					var award = awards[i];
-					timelineJson.timeline.date.push({
-						"startDate": moment(award.date).format("MM/D/YYYY"),
-						"headline": award.name
-					});
-				}	
-				$scope.$broadcast('showTimeline', timelineJson);
+				var promise = getinfo(artist);
+				promise.then(function(new_artist) {
+					var timelineJson = {
+						"timeline": {
+							"headline": "<img src='" + new_artist.profile_link + "' height='250'>",
+							"text": " ",
+							"type": "default",
+							"asset": {
+								"media": new_artist.info
+							},
+							"date": []
+						}
+					};
+
+					var albums = new_artist.albums;
+					var awards = new_artist.awards;
+
+					for (var i = albums.length - 1; i >= 0; i--) {
+						var album = albums[i];
+						timelineJson.timeline.date.push({
+							"startDate": moment(album.releaseDate).format("MM/D/YYYY"),
+							"headline": "<a href='#/reviews?id=" + album.id + "'>" + album.name + "</a>",
+							"asset": {
+								"media": album.cover_link
+							}
+						});
+					}
+
+					for (var i = awards.length - 1; i >= 0; i--) {
+						var award = awards[i];
+						timelineJson.timeline.date.push({
+							"startDate": moment(award.date).format("MM/D/YYYY"),
+							"headline": award.name
+						});
+					}
+					$scope.$broadcast('showTimeline', timelineJson);
+
+				});
 
 			});
 
-
-
-		});
-
-
-
-	}
-]);
+}]);
 controllers.controller('reviewsCtrl', ['$scope', '$http', '$location',
 	function($scope, $http, $location) {
 		$http.get('/YourNextGig/api/stubalbum', {

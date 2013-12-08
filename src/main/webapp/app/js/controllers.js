@@ -138,7 +138,11 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
 								format: 'json'
 							}
 						}).success(function(lastfm, status) {
-							album.cover_link = lastfm.album.image[3]['#text'];
+							if(typeof(lastfm.album) != undefined) {
+								album.cover_link = lastfm.album.image[3]['#text'];								
+							} else {
+								album.cover_link = "";
+							}
 						}).then(then);
 
 					};

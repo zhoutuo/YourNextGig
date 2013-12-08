@@ -5,12 +5,8 @@
 package edu.usc.yournextgig;
 
 import edu.usc.yournextgig.processing.ReleaseDateFormatter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;

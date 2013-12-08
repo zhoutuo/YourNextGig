@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,9 +25,9 @@ public abstract class SparqlQuery<E> {
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(SparqlQuery.class);
     private int queryCount = 0;
     private int skippedQueryCount = 0;
-    private final Map<String, String> queryStrings = new HashMap<String, String>();
-    private final Map<String, E> cachedResults = new HashMap<String, E>();
-    private final Map<String, List<E>> cachedMultiResults = new HashMap<String, List<E>>();
+    private final ConcurrentHashMap<String, String> queryStrings = new ConcurrentHashMap<String, String>();
+    private final ConcurrentHashMap<String, E> cachedResults = new ConcurrentHashMap<String, E>();
+    private final ConcurrentHashMap<String, List<E>> cachedMultiResults = new ConcurrentHashMap<String, List<E>>();
     public E search(String id) {
         String queryStringFileName = getQueryStringFileName();
         return search(id, queryStringFileName);
@@ -44,7 +45,11 @@ public abstract class SparqlQuery<E> {
         LOG.trace(populatedString);
         JSONArray result = sesame.queryForData(populatedString);
         E r = translateQueryResult(result);
-        cachedResults.put(id, r);
+        E oldr = cachedResults.putIfAbsent(id, r);
+        if(oldr != null)
+        {
+           r = oldr;
+        }
         queryCount++;
         return r;
     }
@@ -61,7 +66,11 @@ public abstract class SparqlQuery<E> {
         LOG.trace(populatedString);
         JSONArray result = sesame.queryForData(populatedString);
         List<E> results = translateQueryResults(result);
-        cachedMultiResults.put(id, results);
+        List<E> oldr = cachedMultiResults.putIfAbsent(id, results);
+        if(oldr != null)
+        {
+           results = oldr;
+        }
         queryCount++;
         return results;
     }

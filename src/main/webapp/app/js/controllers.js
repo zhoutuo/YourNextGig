@@ -64,8 +64,8 @@ controllers.controller('concertsCtrl', ['$scope', '$http', '$location',
 					var link = "<a href='#/artist?id=" + artist.id + "'>" + artist.name + "</a><br>"
 					text += link;
 				}
-				var lon = venue.location.geo.longitude;
-				var lat = venue.location.geo.latitude;
+				var lon = concert.geo.longitude;
+				var lat = concert.geo.latitude;
 				text += "Venue: <br>" + venue.name;
 				timelineJson.timeline.date.push({
 					"startDate": date,
@@ -126,23 +126,25 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
 					}).success(function(lastfm, status) {
 						artist.profile_link = lastfm.artist.image[3]['#text'];
 					}).then(then);
-
+                                        
+                                        var tmp = {};
 					for (var i = albums.length - 1; i >= 0; i--) {
-						var album = albums[i];
+                                            
 						$http.jsonp("http://ws.audioscrobbler.com/2.0/?callback=JSON_CALLBACK", {
 							params: {
 								api_key: "ff0d1870597c44a71ccb5ea4afbc0a4d",
 								method: "album.getinfo",
 								artist: artist.name,
-								album: album.name,
+								album: albums[i].name,
 								format: 'json'
 							}
 						}).success(function(lastfm, status) {
-							if(typeof(lastfm.album) != undefined) {
-								album.cover_link = lastfm.album.image[3]['#text'];								
-							} else {
-								album.cover_link = "";
-							}
+                                                    console.log(lastfm);
+                                                    for (var j = albums.length - 1; j >= 0; j--) {
+                                                        if(albums[j].name === lastfm.album.name){
+								albums[j].cover_link = lastfm.album.image[3]['#text'];								
+                                                        }
+                                                    }
 						}).then(then);
 
 					};
@@ -190,13 +192,13 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
 
 					for (var i = rankings.length - 1; i >= 0; i--) {
 						var ranking = rankings[i];
-						timelineJson.timelineJson.timeline.date.push({
+						timelineJson.timeline.date.push({
 							"startDate": moment(ranking.year).format("MM/D/YYYY"),
 							"endDate": moment(ranking.year).add('y', 1).format("MM/D/YYYY"),
 							"headline": "Top " + ranking.ranking + "Artist on Billboard"
 						});
 					};
-
+                                        console.log(timelineJson);
 					$scope.$broadcast('showTimeline', timelineJson);
 
 				});

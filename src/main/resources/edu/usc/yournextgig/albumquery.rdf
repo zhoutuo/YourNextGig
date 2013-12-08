@@ -32,7 +32,7 @@ prefix rr: <http://www.w3.org/ns/r2rml#>
 prefix km-dev: <http://isi.edu/integration/karma/dev#>
 
 
-select ?albumname ?releaseDate ?album
+select ?albumname ?releaseDate ?album ?rating
 where {
 { BIND(IRI("{0}") AS ?album) } .
 ?album a <http://dbpedia.org/ontology/Album>  ;

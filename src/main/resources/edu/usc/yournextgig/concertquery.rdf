@@ -32,11 +32,14 @@ prefix rr: <http://www.w3.org/ns/r2rml#>
 prefix km-dev: <http://isi.edu/integration/karma/dev#>
 
 
-select ?eventname ?eventdate (?event as ?url) ?id
+select ?eventname ?eventdate (?event as ?url) ?id ?lat ?lon
 where {
 { BIND("{0}" AS ?id) } .
 ?event a <http://dbpedia.org/ontology/Event>  .
 ?event  rdfs:label ?eventname .
 ?event  <http://dbpedia.org/ontology/date> ?eventdate .
 ?event <http://dbpedia.org/ontology/id> ?id .
+?event <http://www.w3.org/2003/01/geo/wgs84_pos#location> ?location .
+?location <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat .
+?location <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?lon .
 }

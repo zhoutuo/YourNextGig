@@ -3,6 +3,7 @@
     "type": "object",
     "properties": {
         "venue": { "$ref": "#/definitions/venue" },
+        "geo": { "$ref": "http://json-schema.org/geo" },
         "name": { "type": "string" },
         "info":{ "type": "string" },
         "id": {"type": "string" }, 

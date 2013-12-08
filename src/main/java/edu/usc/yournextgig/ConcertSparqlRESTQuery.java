@@ -48,5 +48,6 @@ public class ConcertSparqlRESTQuery implements ConcertRESTQuery {
         }
         return Response.ok(results.toString(), MediaType.APPLICATION_JSON).build();
     }
+
     
 }

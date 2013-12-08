@@ -8,6 +8,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,6 +39,7 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
     
     @Override
     public Concert search(String id) {
+        LOG.info("searching for concert with id " + id);
         Concert concert = super.search(id);
         searchForArtists(concert);
         searchForVenue(concert);
@@ -50,18 +53,22 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
         return "concertquery.rdf";
     }
     
+    
     public List<Concert> searchByLocation(Double lat, Double lon, Date start, Date end) {
         
         SesameTool sesame = SesameTool.getInstance();
         String searchString = loadSearchString("eventbylocationquery.rdf");
         JSONArray result = sesame.queryForData(searchString);
-        
+        ExecutorService executor = Executors.newFixedThreadPool(10);
         List<Concert> concerts = translateQueryResults(result);
+        
         for(Concert concert : concerts)
         {
-           searchForArtists(concert);
-          searchForVenue(concert);
+            
+            executor.submit(new ConcertPopulator(concert));
+           
         }
+        executor.shutdown();
         return concerts;
     }
 
@@ -72,6 +79,10 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
         concert.setName(jsonConcert.getJSONObject("eventname").getString("value"));
         translateEventDate(jsonConcert, concert);
         concert.setInfo(jsonConcert.getJSONObject("url").getString("value"));
+        Geo geo = new Geo();
+        geo.setLatitude(Double.parseDouble(jsonConcert.getJSONObject("lat").getString("value")));
+        geo.setLongitude(Double.parseDouble(jsonConcert.getJSONObject("lon").getString("value")));
+        concert.setGeo(geo);
         return concert;
     }
 
@@ -101,5 +112,26 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
     private void searchForVenue(Concert concert) {
         concert.setVenue(VenueSparqlQuery.getInstance().searchByEvent(concert.getId()));
     }
-    
+
+
+    /**
+     *
+     * @author jason
+     */
+    public class ConcertPopulator implements Runnable{
+
+        Concert c;
+        public ConcertPopulator(Concert c)
+        {
+            this.c = c;
+        }
+        @Override
+        public void run() {
+            searchForArtists(c);  
+            searchForVenue(c);
+            
+        }
+
+    }
+
 }

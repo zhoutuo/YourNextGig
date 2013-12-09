@@ -7,9 +7,12 @@ package edu.usc.yournextgig;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -62,13 +65,28 @@ public class ConcertSparqlQuery extends SparqlQuery<Concert> {
         ExecutorService executor = Executors.newFixedThreadPool(10);
         List<Concert> concerts = translateQueryResults(result);
         
-        for(Concert concert : concerts)
+        Iterator<Concert> i = concerts.iterator();
+        while(i.hasNext())
         {
-            
-            executor.submit(new ConcertPopulator(concert));
-           
+            Concert concert = i.next();
+            LOG.trace("Processing " + concert.getName() + " on " + concert.getDtstart());
+            if(concert.getDtstart().after(start))
+            {
+                executor.submit(new ConcertPopulator(concert));
+            }
+            else
+            {
+                LOG.trace("removed " + concert.getName() + " because it was on " + concert.getDtstart());
+                i.remove();
+            }
         }
+        LOG.info("searched for " + concerts.size());
         executor.shutdown();
+        try {
+            executor.awaitTermination(2, TimeUnit.MINUTES);
+        } catch (InterruptedException ex) {
+            LOG.error("took too long to complete query");
+        }
         return concerts;
     }
 

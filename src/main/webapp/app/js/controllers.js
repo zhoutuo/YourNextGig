@@ -66,7 +66,7 @@ controllers.controller('concertsCtrl', ['$scope', '$http', '$location',
 				}
 				var lon = concert.geo.longitude;
 				var lat = concert.geo.latitude;
-				text += "Venue: <br>" + venue.name;
+				//text += "Venue: <br>" + venue.name;
 				timelineJson.timeline.date.push({
 					"startDate": date,
 					"headline": headline,
@@ -195,7 +195,7 @@ controllers.controller('artistCtrl', ['$scope', '$http', '$location', '$q',
 						timelineJson.timeline.date.push({
 							"startDate": moment(ranking.year).format("MM/D/YYYY"),
 							"endDate": moment(ranking.year).add('y', 1).format("MM/D/YYYY"),
-							"headline": "Top " + ranking.ranking + "Artist on Billboard"
+							"headline": "Reached #" + ranking.ranking + " on Billboard"
 						});
 					};
                                         console.log(timelineJson);

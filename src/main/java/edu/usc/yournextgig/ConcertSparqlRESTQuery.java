@@ -38,7 +38,7 @@ public class ConcertSparqlRESTQuery implements ConcertRESTQuery {
         LOG.trace("start: " + starttime);
         LOG.trace("stop: " + endtime);
         ConcertSparqlQuery instance = ConcertSparqlQuery.getInstance();
-        List<Concert> concerts = instance.searchByLocation(lat, lon, new Date(starttime), new Date(endtime));
+        List<Concert> concerts = instance.searchByLocation(lat, lon, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()));
         Collections.sort(concerts, new ConcertComparator());
         
         JSONArray results = new JSONArray();

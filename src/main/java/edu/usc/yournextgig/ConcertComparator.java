@@ -39,16 +39,26 @@ public class ConcertComparator implements Comparator<Concert> {
     private int findTopScore(List<Artist> artists1, int maxReviewScore1) throws NumberFormatException {
         for(Artist artist : artists1)
         {
+            boolean hasRating = false;
+            int ratingSum = 0;
+            int ratedAlbums = 0;
             for(Album a : artist.getAlbums())
             {
                 String rating = a.getRating();
                 if(rating != null && !(rating = rating.trim()).isEmpty())
                 {
                     int score = Integer.parseInt(rating);
-                    if(score > maxReviewScore1)
-                    {
-                        maxReviewScore1 = score;
-                    }
+                    ratingSum+= score;
+                    ratedAlbums++;
+                    hasRating = true;
+                }
+            }
+            if(hasRating)
+            {
+                int average = ratingSum/ratedAlbums;
+                if(average > maxReviewScore1)
+                {
+                    maxReviewScore1 = average;
                 }
             }
         }
